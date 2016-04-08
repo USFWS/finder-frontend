@@ -1,0 +1,26 @@
+<h1>User Administration</h1>
+<p>This view will only be available to Admin users.  The main purpose of this view is the ability to grant users additional permissions (i.e. upgrade a user from viewer to editor, or editor to admin).</p>
+
+<table class="table" ng-init="getUsers()">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Job</th>
+      <th>Phone</th>
+      <th>Account Type</th>
+      <th>Modify User</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="user in users">
+      <td>{{ user.email }}</td>
+      <td>{{ user.job }}</td>
+      <td>{{ user.phone }}</td>
+      <td>{{ user.accountType }}</td>
+      <td>
+        <button ui-sref="user.update({ id: user.id })" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-edit"></span></button>
+        <button ng-click="destroy(user)" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+      </td>
+    </tr>
+  </tbody>
+</table>

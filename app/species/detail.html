@@ -1,0 +1,18 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2 class="panel-title">{{ species.commonName }}&nbsp;(<em>{{ species.scientificName}}</em>)</h2>
+  </div>
+  <div class="panel-body">
+    <div class="species-card">
+      <button class="btn btn-sm btn-success pull-right" ui-sref="species.update({ id: species.id })"><span class="fa fa-edit"></span> Edit</button>
+      <button class="btn btn-sm btn-danger pull-right" ui-sref="species.destroy()"><span class="fa fa-trash"></span>  Delete</button>
+      <h3>Taxon: {{ species.taxon }}</h3>
+      <h3>Lead office: {{ species.leadOffice }}</h3>
+      <h3>Status<span ng-if="species.status.length > 1">es</span>:</h3>
+      <ul>
+        <li ng-repeat="status in species.status">{{ status.date | date:shortDate }}: <a href="{{ status.url }}" target="_blank">{{ status.name }}</a></li>
+      </ul>
+    </div>
+    <leaflet geojson="geojson" center="center" style="height: 300px;"></leaflet>
+  </div>
+</div>

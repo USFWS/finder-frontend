@@ -1,0 +1,189 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  padding: 0;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  margin-bottom: 2em;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+footer {
+  margin-top: 2em;
+  padding-top: 1em;
+  background-color: #2c3e50;
+  color: #fff;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Create Species Form */
+#scientificName {
+  font-style: italic;
+}
+
+/* Species List */
+.species-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+/* Change History List */
+.change-history {
+  padding: 0;
+  list-style-type: none;
+  margin: auto;
+}
+
+.change-history li {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.change-action {
+  text-transform: capitalize;
+}
+
+.view-group {
+  margin-bottom: 2em;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    border-radius: 0;
+  }
+}
+
+/* Show an icon on sortable table headers */
+.tablesort-sortable {
+  cursor: pointer;
+  position: relative;
+}
+
+.tablesort-sortable:hover {
+  background: #bbb;
+}
+
+.tablesort-sortable:hover::after {
+  content: '\f0dc';
+  font-family: 'FontAwesome';
+  position: absolute;
+  right: 10px;
+}
+/* Animations */
+tr.ng-enter,
+tr.ng-move,
+.list-group-item.ng-enter,
+.list-group-item.ng-move {
+  animation: lightSpeedIn .5s;
+}
+
+tr.ng-leave,
+.list-group-item.ng-leave {
+  animation: lightSpeedOut .5s;
+}
+
+.status-date {
+  margin-bottom: 15px;
+}
+
+.remove-status {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.add-status {
+  width: 100%;
+}
+
+@media(min-width: 768px) {
+  .status-picker {
+    float: left;
+    width: 63%;
+  }
+
+  .status-date {
+    margin-bottom: 15px;
+    float: right;
+    width: 35%;
+  }
+
+  .status-url {
+    float: left;
+    width: 78%;
+  }
+  .remove-status {
+    float: right;
+    width: 20%;
+  }
+
+  .add-status {
+    display: block;
+    margin: auto;
+    max-width: 250px;
+    width: 40%;
+  }
+}

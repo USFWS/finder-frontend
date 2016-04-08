@@ -1,0 +1,14 @@
+<!-- Species addressed by another region -->
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h2 class="panel-title">Species that will be addressed by a Region other than the Southeast</h2>
+  </div>
+  <div class="panel-body">
+    <p>This query returns all species that are led by a region other than the Southeast</p>
+    <form class="form">
+      <button class="btn btn-info btn-block" ng-click="otherRegion()">Submit Query<span class="fa fa-cog fa-spin" ng-show="loading"></span></button>
+    </form><br>
+  </div>
+</div>
+
+<div ng-show="results.length > 0" ng-include="'partials/query-results.html'"></div>

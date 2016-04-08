@@ -1,0 +1,28 @@
+<div ts-wrapper ng-if="results" class="panel panel-success" id="query-results">
+  <div class="panel-heading">
+    <h2 class="panel-title" ng-if="!query.terms">Query Results</h2>
+    <h2 class="panel-title" ng-if="query.terms">{{ query.terms }}</h2>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th ts-criteria="scientificName">Scientific Name</th>
+        <th ts-criteria="commonName">Common Name</th>
+        <th ts-criteria="currentStatus()">Current Status</th>
+        <th ts-criteria="taxon" ts-default>Taxon</th>
+        <th ts-criteria="leadOffice">Lead Office</th>
+        <th>State Range</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="result in results" ts-repeat>
+        <td>{{ result.scientificName }}</td>
+        <td>{{ result.commonName }}</td>
+        <td>{{ result.currentStatus() }}</td>
+        <td>{{ result.taxon }}</td>
+        <td>{{ result.leadOffice }}</td>
+        <td>{{ result.range.join(', ') }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

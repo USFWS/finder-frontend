@@ -1,0 +1,27 @@
+<!-- Species occur in more than one state -->
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h2 class="panel-title">Species that occur in more than one state</h2>
+  </div>
+  <div class="panel-body">
+    <p>By default this query returns all species that are found in more than one state.  If you would like to limit your query to a specific state select that state from the list below. To select multiple states hold down Command on a Mac or Control on a PC and select multiple states with your mouse. To retrieve all species that occur in more than one state leave the input blank.</p>
+    <form class="form" ng-submit="queryNonEndemic()">
+      <div class="form-group" ng-hide="query.nonEndemic.length < 2">
+        <label for="query-and">
+          <input type="radio" ng-model="query.type" value="and" id="query-and">
+          AND: Returns species that contain all of the requested states (Alabama AND Arkansas)
+        </label><br>
+        <label for="query-or">
+          <input type="radio" ng-model="query.type" value="or" id="query-or">
+          OR: Returns species that contain any of the requested states: (Alabama OR Arkansas)
+        </label>
+      </div>
+      <div class="form-group">
+        <select ng-options="str for str in stateList" ng-model="query.nonEndemic" class="form-control" multiple></select>
+      </div>
+      <button class="btn btn-info btn-block" type="submit">Submit Query<span class="fa fa-cog fa-spin" ng-show="loading"></span></button>
+    </form><br>
+  </div>
+</div>
+
+<div ng-show="results.length > 0" ng-include="'partials/query-results.html'"></div>

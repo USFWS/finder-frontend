@@ -1,0 +1,30 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2 class="panel-title">User Profile</h2>
+  </div>
+  <div class="panel-body">
+    <form ng-submit="update(user)">
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input ng-model="user.email" type="email" class="form-control" id="email" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <label for="job">Job</label>
+        <input ng-model="user.job" type="text" class="form-control" id="job" placeholder="Endangered Species Biologist">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input ng-model="user.phone" type="text" class="form-control" id="phone" placeholder="(404) 679-7000">
+      </div>
+      <div class="form-group">
+        <label for="accountType">Account Type</label>
+        <select ng-model="user.accountType" class="form-control" id="accountType">
+          <option value="admin">Admin</option>
+          <option value="editor">Editor</option>
+          <option value="viewer">Viewer</option>
+        </select>
+      </div>
+      <button ng-disable="!isAdmin()" type="submit" class="btn btn-primary btn-block">Update</button>
+    </form>
+  </div>
+</div>

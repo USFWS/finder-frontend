@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en_US">
+  <head>
+    <meta charset="utf-8">
+    <title>At-Risk Species Finder | U.S Fish and Wildlife Service</title>
+    <meta name="description" content="The At-Risk Species Finder is a web database of species that may warrant Federal protection under the Endangered Species Act.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootswatch-dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+    <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/angularjs-datepicker/dist/angular-datepicker.min.css" />
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="frontendApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div ng-include="'header/header.html'"></div>
+
+    <div class="container">
+      <div ui-view></div>
+    </div>
+
+    <div ng-include="'partials/footer.html'"></div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootswatch-dist/js/bootstrap.js"></script>
+    <script src="bower_components/satellizer/satellizer.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="bower_components/leaflet/dist/leaflet.js"></script>
+    <script src="bower_components/angular-leaflet/dist/angular-leaflet-directive.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/angularjs-datepicker/dist/angular-datepicker.min.js"></script>
+    <script src="bower_components/angular-tablesort/js/angular-tablesort.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="app.js"></script>
+        <script src="app.config.js"></script>
+        <script src="PickListService.js"></script>
+
+        <script src="species/speciesCtrl.js"></script>
+        <script src="species/updateSpeciesCtrl.js"></script>
+        <script src="species/speciesListCtrl.js"></script>
+        <script src="species/SpeciesService.js"></script>
+        <script src="species/createSpeciesCtrl.js"></script>
+        <script src="species/statusDirective.js"></script>
+        <script src="species/SpeciesModel.js"></script>
+
+        <script src="user/UserService.js"></script>
+        <script src="user/profileCtrl.js"></script>
+        <script src="user/UserModel.js"></script>
+        <script src="user/userAdminCtrl.js"></script>
+
+        <script src="query/custom/queryCtrl.js"></script>
+        <script src="query/queryListCtrl.js"></script>
+        <script src="query/QueryService.js"></script>
+        <script src="query/endemic/queryEndemicCtrl.js"></script>
+        <script src="query/nonEndemic/queryNonEndemicCtrl.js"></script>
+        <script src="query/byStatus/queryStatusCtrl.js"></script>
+        <script src="query/region/queryNonSoutheastCtrl.js"></script>
+
+        <script src="header/headerCtrl.js"></script>
+        <script src="map/map.js"></script>
+        <script src="offices/OfficeService.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

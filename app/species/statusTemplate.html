@@ -1,0 +1,16 @@
+<label>Status(es):</label><br>
+<div class="form status-form" ng-repeat="status in statuses">
+  <div class="form-group status-picker">
+    <select ng-options="str for str in options" ng-model="status.name" class="form-control" required></select>
+  </div>
+  <div class="form-group">
+    <datepicker class="status-date" date-format="yyyy-MM-dd">
+      <input type="text" class="form-control"  ng-model="status.date" placeholder="Date">
+    </datepicker>
+  </div>
+  <div class="form-group status-url">
+    <input type="text" class="form-control" ng-model="status.url" placeholder="Document URL">
+  </div>
+  <button type="button" class="btn btn-danger remove-status" ng-click="removeStatus($index)"><span class="fa fa-trash"></span> Remove</button>
+</div>
+<button class="btn btn-success add-status" type="button" ng-click="addStatus()"><span class="fa fa-plus"></span>&nbsp;&nbsp;Add Status</button>

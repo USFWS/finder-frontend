@@ -1,0 +1,18 @@
+<!-- Endemic query -->
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h2 class="panel-title">Endemic species (range includes only one state)</h2>
+  </div>
+  <div class="panel-body">
+    <p>By default this query returns all species that are found in only one state.  If you would like to limit your query to a specific state select that state from the list below. To select multiple states hold down Command on a Mac or Control on a PC and select multiple states with your mouse. To retrieve all species that occur in only one state leave the input blank.</p>
+    <form class="form" ng-submit="queryEndemic(query)">
+      <div class="form-group">
+        <select ng-options="str for str in stateList" ng-model="query.endemic" class="form-control" multiple></select>
+      </div>
+      <button class="btn btn-info btn-block">Submit Query<span class="fa fa-cog fa-spin" ng-show="loading"></span></button>
+    </form><br>
+    <div ng-show="toggle.endemic" ng-include="'views/partials/query-results.html'"></div>
+  </div>
+</div>
+
+<div ng-show="results.length > 0" ng-include="'partials/query-results.html'"></div>

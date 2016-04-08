@@ -1,0 +1,53 @@
+<h2 ng-if="query" class="visible-print text-center">Query: {{ query }}</h2>
+
+<div class="text-center">
+  <div class="btn-group view-group hidden-print" role="group">
+    <a ui-sref-active="active" ui-sref="species.list" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-align-justify"></span>&nbsp;&nbsp;&nbsp;Table</a>
+    <a ui-sref-active="active" ui-sref="species.summary" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-phone"></span>&nbsp;&nbsp;&nbsp;Summary</a>
+  </div>
+
+  <div class="form-group hidden-print">
+    <label class="sr-only">Query Species</label>
+    <div class="input-group">
+      <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+      <input type="search" class="form-control" ng-model="query" placeholder="Enter term to filter species" ng-model-options="{ debounce: 1000 }">
+    </div>
+  </div>
+</div>
+
+<p class="hidden-print text-center"><strong>Click on column header to sort the list!</strong></p>
+<table ts-wrapper class="table table-striped">
+  <thead>
+    <tr>
+      <th ts-criteria="scientificName">Scientific Name</th>
+      <th ts-criteria="commonName">Common Name</th>
+      <th ts-criteria="status">Status</th>
+      <th ts-criteria="taxon" ts-default>Taxon</th>
+      <th ts-criteria="leadOffice">Lead Office</th>
+      <th>State Range</th>
+      <th>More Info</th>
+      <th ng-if="isAdmin() || isEditor()" class="hidden-print">Edit</th>
+      <th ng-if="isAdmin()" class="hidden-print">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr ng-if=""></tr> If the length of the filtered list is 0 -->
+    <tr ng-repeat="animal in species | filter:query" ts-repeat>
+      <td>{{ animal.scientificName }}</td>
+      <td>{{ animal.commonName }}</td>
+      <td>{{ animal.currentStatus() }}</td>
+      <td>{{ animal.taxon }}</td>
+      <td>{{ animal.leadOffice }}</td>
+      <td>{{ animal.range.join(', ') }}</td>
+      <td class="hidden-print">
+        <button ui-sref="species.detail({ id: animal.id })" class="btn btn-sm btn-primary" title="More info"><span class="fa fa-eye"></span></button>
+      </td>
+      <td ng-if="isAdmin() || isEditor()" class="hidden-print">
+        <button ui-sref="species.update({ id: animal.id })" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-edit"></span></button>
+      </td>
+      <td ng-if="isAdmin()" class="hidden-print">
+        <button ng-click="remove(animal)" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+      </td>
+    </tr>
+  </tbody>
+</table>

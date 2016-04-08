@@ -1,0 +1,17 @@
+<!-- Species by Status -->
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h2 class="panel-title">Species by Status</h2>
+  </div>
+  <div class="panel-body">
+    <p>This query returns a list of species based on their current status in the database.  You can provide either a single status or a combination of many.  The result will be a list of species who&rsquo;s current status matches one of those that you provide in the form below.  To select more than one species from the list hold down the Command button on a Mac or Control button on a PC and choose each of the statuses you would like to search with your mouse.</p>
+    <form class="form">
+      <div class="form-group">
+        <select ng-options="str for str in statusList" ng-model="query.status" class="form-control" multiple required></select>
+      </div>
+      <button class="btn btn-info btn-block" ng-click="queryStatus()">Submit Query<span class="fa fa-cog fa-spin" ng-show="loading"></span></button>
+    </form><br>
+  </div>
+</div>
+
+<div ng-show="results.length > 0" ng-include="'partials/query-results.html'"></div>
