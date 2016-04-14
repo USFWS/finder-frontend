@@ -10,7 +10,7 @@
 angular.module('frontendApp')
   .controller('CreateSpeciesCtrl', function ($scope, SpeciesModel, Map, PickList, officeList) {
     var clickHandler = false;
-    $scope.officeList = officeList.sort(alphabetize);
+    $scope.officeList = officeList;
     $scope.taxonList = PickList.TAXON_LIST;
     $scope.statusList = PickList.STATUS_LIST;
     $scope.species = new SpeciesModel({});
@@ -19,12 +19,6 @@ angular.module('frontendApp')
       lng: -94.1480978,
       zoom: 3
     };
-
-    function alphabetize(a,b) {
-      if (a.name < b.name) return -1;
-      else if (a.name > b.name) return 1;
-      else return 0;
-    }
 
     $scope.create = function(species) {
       if ( species.validate() ) {

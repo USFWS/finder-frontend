@@ -12,19 +12,13 @@ angular.module('frontendApp')
     function ($scope, selectedSpecies, User, Map, PickList, officeList) {
       $scope.taxonList = PickList.TAXON_LIST;
       $scope.statusList = PickList.STATUS_LIST;
-      $scope.officeList = officeList.sort(alphabetize);
+      $scope.officeList = officeList;
       $scope.species = selectedSpecies;
       $scope.center = {
         lat: 34.8934492,
         lng: -94.1480978,
         zoom: 3
       };
-
-    function alphabetize(a,b) {
-      if (a.name < b.name) return -1;
-      else if (a.name > b.name) return 1;
-      else return 0;
-    }
 
     $scope.updateSpecies = function(species) {
       if ( species.validate() ) species.update();
