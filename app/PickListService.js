@@ -102,6 +102,20 @@
       'Lawsuit to Challenge Not Warranted 12-month Finding'
     ];
 
+    var DOES_NOT_NEED_PROTECTION = [
+      'Candidate Removal',
+      'Petition Withdrawn',
+      'Not Substantial 90-day Finding',
+      'Not Warranted 12-month Finding',
+    ];
+
+    var PROTECTED = [
+      'Final Listing as Threatened due to Similarity of Appearance',
+      'Final Listing as Endangered due to Similarity of Appearance',
+      'Final Listing as Threatened',
+      'Final Listing as Endangered'
+    ];
+
     var REGION_LIST = [
         'Pacific',
         'Southwest',
@@ -118,7 +132,9 @@
       TAXON_LIST: TAXON_LIST,
       STATUS_LIST: STATUS_LIST,
       REGION_LIST: REGION_LIST,
-      STATE_LIST: STATE_LIST
+      STATE_LIST: STATE_LIST,
+      PROTECTED: PROTECTED,
+      DOES_NOT_NEED_PROTECTION: DOES_NOT_NEED_PROTECTION
     };
 
   });
