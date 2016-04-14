@@ -45,9 +45,8 @@
             toastr.success('Successfully updated ' + self.name);
           })
           .catch(function (response) {
-            console.log(response);
             toastr.error(response.statusText, 'Could not update office.');
-          })
+          });
       };
 
       OfficeModel.prototype.destroy = function () {
@@ -59,6 +58,10 @@
           .catch(function (response) {
             toastr.error(response.statusText, 'Could not delete office.');
           });
+      };
+
+      OfficeModel.prototype.getLocation = function () {
+        return [this.city, this.state].join(', ');
       };
 
       return OfficeModel;
