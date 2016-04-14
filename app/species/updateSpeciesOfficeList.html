@@ -1,0 +1,15 @@
+<div class="form-group">
+
+  <label for="office">Associated Office(s):</label>
+  <p><span class="fa fa-info-circle"></span> Use the pick list below to associate an office with this species, which will be automatically added to the list. To remove an office from the list use the red trashcan button.</p>
+
+  <select ng-options="office.name for office in offices" ng-model="newOffice" ng-change="associateOffice(species, newOffice)" class="form-control" id="office" required></select>
+
+  <ul class="list-group" style="margin-top: 1em;">
+    <li ng-repeat="office in species.offices" class="list-group-item clearfix">
+      {{ office.name }}, {{ office.phone }} <span ng-if="office.email">, <a href="mailto:{{ office.email }}?subject=At+Risk+Species+Finder+{{ species.scientificName }}">{{ office.email }}</a></span>
+      <button class="btn btn-danger pull-right" type="button" ng-click="removeAssociatedOffice(species, office)"><span class="fa fa-trash"></span> Remove</button>
+    </li>
+  </ul>
+
+</div>
