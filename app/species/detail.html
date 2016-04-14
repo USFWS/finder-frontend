@@ -4,9 +4,15 @@
   </div>
   <div class="panel-body">
     <div class="species-card">
-      <button class="btn btn-sm btn-success pull-right" ui-sref="species.update({ id: species.id })"><span class="fa fa-edit"></span> Edit</button>
-      <button class="btn btn-sm btn-danger pull-right" ui-sref="species.destroy()"><span class="fa fa-trash"></span>  Delete</button>
+      <button class="btn btn-sm btn-success pull-right" ui-sref="species.update({ id: species.id })" style="margin-left:1em;"><span class="fa fa-edit"></span> Edit</button>
+      <button class="btn btn-sm btn-danger pull-right" ng-click="destroy(species)"><span class="fa fa-trash"></span>  Delete</button>
       <h3>Taxon: {{ species.taxon }}</h3>
+      <h3>Associated Office(s):</h3>
+      <ul>
+        <li ng-repeat="office in species.offices">
+          {{ office.name }}, {{ office.phone }} <span ng-if="office.email">, <a href="mailto:{{ office.email }}?subject=At+Risk+Species+Finder+{{ species.scientificName }}">{{ office.email }}</a></span>
+        </li>
+      </ul>
       <h3>Lead office: {{ species.leadOffice }}</h3>
       <h3>Status<span ng-if="species.status.length > 1">es</span>:</h3>
       <ul>
