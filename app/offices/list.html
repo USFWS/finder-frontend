@@ -1,0 +1,46 @@
+<div class="text-center">
+  <div class="form-group hidden-print">
+    <label class="sr-only">Query Species</label>
+    <div class="input-group">
+      <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+      <input type="search" class="form-control" ng-model="query" placeholder="Enter term to filter offices" ng-model-options="{ debounce: 1000 }">
+    </div>
+  </div>
+</div>
+
+<p class="hidden-print text-center"><strong>Click on column header to sort the list!</strong></p>
+<table ts-wrapper class="table table-striped">
+  <thead>
+    <tr>
+      <th ts-criteria="name" ts-default>Name</th>
+      <th ts-criteria="region">Region</th>
+      <th ts-criteria="city">City</th>
+      <th ts-criteria="state">State</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th class="hidden-print">Info</th>
+      <th ng-if="isAdmin() || isEditor()" class="hidden-print">Edit</th>
+      <th ng-if="isAdmin()" class="hidden-print">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr ng-if=""></tr> If the length of the filtered list is 0 -->
+    <tr ng-repeat="office in offices | filter:query" ts-repeat>
+      <td><a href="{{ office.url }}">{{ office.name }}</a></td>
+      <td>{{ office.adminRegion }}</td>
+      <td>{{ office.city }}</td>
+      <td>{{ office.state }}</td>
+      <td>{{ office.phone }}</td>
+      <td><a href="mailto:{{ office.email }}">{{ office.email }}</a></td>
+      <td class="hidden-print">
+        <button ui-sref="offices.detail({ id: office.id })" class="btn btn-sm btn-primary" title="More info"><span class="fa fa-eye"></span></button>
+      </td>
+      <td ng-if="isAdmin() || isEditor()" class="hidden-print">
+        <button ui-sref="offices.update({ id: office.id })" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-edit"></span></button>
+      </td>
+      <td ng-if="isAdmin()" class="hidden-print">
+        <button ng-click="remove(office)" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
