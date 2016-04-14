@@ -9,13 +9,18 @@
    * Controller of the frontendApp
    */
   angular.module('frontendApp')
-    .controller('SpeciesCtrl', function ($scope, theSpecies, Map) {
+    .controller('SpeciesCtrl', function ($scope, theSpecies, Map, $state) {
 
       $scope.species = theSpecies;
       $scope.center = {
         lat: 34.8934492,
         lng: -94.1480978,
         zoom: 3
+      };
+
+      $scope.destroy = function (species) {
+        species.destroy();
+        $state.go('species.list');
       };
 
       $scope.loadMap = function() {
