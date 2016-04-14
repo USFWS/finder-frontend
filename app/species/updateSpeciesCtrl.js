@@ -9,9 +9,10 @@
  */
 angular.module('frontendApp')
   .controller('UpdateSpeciesCtrl',
-    function ($scope, selectedSpecies, User, Map, PickList) {
+    function ($scope, selectedSpecies, User, Map, PickList, officeList) {
       $scope.taxonList = PickList.TAXON_LIST;
       $scope.statusList = PickList.STATUS_LIST;
+      $scope.officeList = officeList.sort(alphabetize);
       $scope.species = selectedSpecies;
       $scope.center = {
         lat: 34.8934492,
@@ -19,10 +20,14 @@ angular.module('frontendApp')
         zoom: 3
       };
 
+    function alphabetize(a,b) {
+      if (a.name < b.name) return -1;
+      else if (a.name > b.name) return 1;
+      else return 0;
+    }
+
     $scope.updateSpecies = function(species) {
-      if ( species.validate() ) {
-        species.update();
-      }
+      if ( species.validate() ) species.update();
     };
 
     $scope.isEditor = function() {
