@@ -55,6 +55,7 @@ angular.module('frontendApp')
       angular.forEach(response.data, function (animal) {
         results.push( new SpeciesModel(animal) );
       });
+      if (results.length === 0) toastr.info('Query did not return any At-Risk species.');
       toastr.success('Query returned ' + results.length + ' At-Risk species.');
       return results;
     }

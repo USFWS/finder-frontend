@@ -9,8 +9,9 @@
    * Controller of the frontendApp
    */
   angular.module('frontendApp')
-    .controller('QueryCtrl', function ($scope, $httpParamSerializerJQLike, Map, Query, toastr, SpeciesModel, PickList) {
+    .controller('QueryCtrl', function ($scope, $httpParamSerializerJQLike, Map, Query, toastr, SpeciesModel, PickList, officeList) {
       var clickHandler = false;
+      $scope.officeList = officeList;
       $scope.statusList = PickList.STATUS_LIST;
       $scope.taxonList = PickList.TAXON_LIST;
       $scope.loading = { reset: false, query: false };
@@ -25,21 +26,12 @@
         var query = $httpParamSerializerJQLike($scope.query);
         $scope.loading.query = true;
 
-        Query.custom(query).then(function (response) {
-          $scope.results = [];
-          angular.forEach(response.data, function(animal) {
-            $scope.results.push( new SpeciesModel(animal) );
+        Query.custom(query)
+          .then(function (species) {
+            $scope.results = species;
+          }).finally(function() {
+            $scope.loading.query = false;
           });
-          if (response.data.length === 0){
-            toastr.info(response.statusText, 'No results found.');
-          } else {
-            toastr.success(response.statusText, response.data.length + ' Results Found!');
-          }
-        }).catch(function (response) {
-          toastr.error(response.statusText, 'Query unsuccessful.');
-        }).finally(function() {
-          $scope.loading.query = false;
-        });
       };
 
       $scope.loadMap = function() {
@@ -74,7 +66,6 @@
       };
 
       $scope.getQuery = function () {
-        console.log($scope.query);
         var searchTerms = [];
         if ($scope.query.status) searchTerms.push($scope.query.status);
         if ($scope.query.taxon) searchTerms.push($scope.query.taxon);
