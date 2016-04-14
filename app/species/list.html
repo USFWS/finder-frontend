@@ -37,7 +37,7 @@
       <td>{{ animal.commonName }}</td>
       <td>{{ animal.currentStatus() }}</td>
       <td>{{ animal.taxon }}</td>
-      <td>{{ animal.leadOffice }}</td>
+      <td>{{ animal.getLeadOfficeName() }}</td>
       <td>{{ animal.range.join(', ') }}</td>
       <td class="hidden-print">
         <button ui-sref="species.detail({ id: animal.id })" class="btn btn-sm btn-primary" title="More info"><span class="fa fa-eye"></span></button>
