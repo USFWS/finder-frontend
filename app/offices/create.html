@@ -1,0 +1,46 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2 class="panel-title">Add and Office to the Database</h2>
+  </div>
+  <div class="panel-body">
+    <form ng-submit="create(office)">
+      <div class="form-group">
+        <label for="name">Office Name</label>
+        <input ng-model="office.name" type="text" class="form-control" id="name" placeholder="Southeast Regional Office" required>
+      </div>
+      <div class="form-group">
+        <label for="region">Region</label>
+        <select ng-options="str for str in regionList" ng-model="office.adminRegion" class="form-control" id="region" required></select>
+      </div>
+      <div class="form-group">
+        <label for="street">Street Name</label>
+        <input ng-model="office.street" type="text" class="form-control" id="street" placeholder="1875 Century Boulevard NE" required>
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" ng-model="office.city" class="form-control" id="city" placeholder="Atlanta" required>
+      </div>
+      <div class="form-group">
+        <label for="state">State</label>
+        <select ng-options="str for str in stateList" ng-model="office.state" id="state" class="form-control" required></select>
+      </div>
+      <div class="form-group">
+        <label for="zip">Zipcode</label>
+        <input type="text" ng-model="office.zip" class="form-control" id="zip" placeholder="30312" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" ng-model="office.phone" class="form-control" id="phone" placeholder="(404) 679-000">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" ng-model="office.email" class="form-control" id="email" placeholder="southeast@fws.gov">
+      </div>
+      <div class="form-group">
+        <label for="website">Website</label>
+        <input type="text" ng-model="office.url" class="form-control" id="url" placeholder="http://www.fws.gov/southeast">
+      </div>
+      <button class="btn btn-success btn-block" type="submit">Create</button>
+    </form>
+  </div>
+</div>
