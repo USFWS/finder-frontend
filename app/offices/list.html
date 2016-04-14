@@ -13,8 +13,9 @@
   <thead>
     <tr>
       <th ts-criteria="name" ts-default>Name</th>
-      <th>Location</th>
       <th ts-criteria="region">Region</th>
+      <th ts-criteria="city">City</th>
+      <th ts-criteria="state">State</th>
       <th ts-criteria="species"># Species</th>
       <th class="hidden-print">Info</th>
       <th ng-if="isAdmin() || isEditor()" class="hidden-print">Edit</th>
@@ -25,8 +26,9 @@
     <!-- <tr ng-if=""></tr> If the length of the filtered list is 0 -->
     <tr ng-repeat="office in offices | filter:query" ts-repeat>
       <td><a href="{{ office.url }}">{{ office.name }}</a></td>
-      <td>{{ office.getLocation() }}</td>
       <td>{{ office.adminRegion }}</td>
+      <td>{{ office.city }}</td>
+      <td>{{ office.state }}</td>
       <td>{{ office.species.length }}</td>
       <td class="hidden-print">
         <button ui-sref="offices.detail({ id: office.id })" class="btn btn-sm btn-primary" title="More info"><span class="fa fa-eye"></span></button>
