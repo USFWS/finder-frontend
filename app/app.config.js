@@ -12,7 +12,13 @@ angular.module('frontendApp')
 
       .state('home', {
         url: '/',
-        templateUrl: 'main.html'
+        templateUrl: 'home/main.html',
+        controller: 'HomeCtrl',
+        resolve: {
+          SpeciesList: function (Species) {
+            return Species.getSpecies();
+          }
+        }
       })
 
       .state('species', {
@@ -116,7 +122,12 @@ angular.module('frontendApp')
       .state('query.custom', {
         url: '/custom',
         templateUrl: 'query/custom/custom.html',
-        controller: 'QueryCtrl'
+        controller: 'QueryCtrl',
+        resolve: {
+          officeList: function (Office) {
+            return Office.getOffices();
+          }
+        }
       })
 
       .state('user', {
