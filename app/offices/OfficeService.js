@@ -17,7 +17,7 @@ angular.module('frontendApp')
           angular.forEach(response.data, function (office) {
             results.push( new OfficeModel(office) );
           });
-          return results;
+          return results.sort(alphabetize);
         })
         .catch(function (response) {
           toastr.error(response.statusText, 'Could not download offices.');
@@ -32,6 +32,12 @@ angular.module('frontendApp')
         .catch(function (response) {
           toastr.error(response.statusText, 'Could not download office.');
         });
+    }
+
+    function alphabetize(a,b) {
+      if (a.name < b.name) return -1;
+      else if (a.name > b.name) return 1;
+      else return 0;
     }
 
     return {
