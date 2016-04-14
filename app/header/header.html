@@ -33,6 +33,12 @@
             <li><a ng-show="isEditor() || isAdmin()" ui-sref="species.create">Create</a></li>
           </ul>
         </li>
+        <li class="dropdown" ui-sref-active="active"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Offices <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a ui-sref="offices.list">List</a></li>
+            <li><a ng-show="isEditor() || isAdmin()" ui-sref="offices.create">Create</a></li>
+          </ul>
+        </li>
         <li class="dropdown" ui-sref-active="active" ng-show="isAuthenticated()">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
           <ul class="dropdown-menu">
