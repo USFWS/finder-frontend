@@ -29,7 +29,8 @@
       'Minnesota',
       'Mississippi',
       'Missouri',
-      'Montana Nebraska',
+      'Montana',
+      'Nebraska',
       'Nevada',
       'New Hampshire',
       'New Jersey',
@@ -40,7 +41,9 @@
       'Ohio',
       'Oklahoma',
       'Oregon',
-      'Pennsylvania Rhode Island',
+      'Pennsylvania',
+      'Puerto Rico',
+      'Rhode Island',
       'South Carolina',
       'South Dakota',
       'Tennessee',
@@ -99,14 +102,22 @@
       'Lawsuit to Challenge Not Warranted 12-month Finding'
     ];
 
-    var OFFICE_LIST = [
-
-    ];
+    var REGION_LIST = [
+        'Pacific',
+        'Southwest',
+        'Midwest',
+        'Southeast',
+        'Northeast',
+        'Mountain-Prairie',
+        'Alaska',
+        'Pacific Southwest',
+        'National'
+      ];
 
     return {
       TAXON_LIST: TAXON_LIST,
       STATUS_LIST: STATUS_LIST,
-      OFFICE_LIST: OFFICE_LIST,
+      REGION_LIST: REGION_LIST,
       STATE_LIST: STATE_LIST
     };
 
