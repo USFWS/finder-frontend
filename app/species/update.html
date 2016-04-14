@@ -3,7 +3,7 @@
     <h2 class="panel-title">Update a Species</h2>
   </div>
   <div class="panel-body">
-    <form ng-submit="updateSpecies()">
+    <form ng-submit="updateSpecies(species)">
       <div class="form-group">
         <label for="scientificName">Scientific Name:</label>
         <input ng-model="species.scientificName" type="text" class="form-control" id="scientificName" placeholder="Ambystoma barbouri" required>
@@ -21,8 +21,11 @@
         <label for="taxon">Taxonomic Group:</label>
         <select ng-options="str for str in taxonList" ng-model="species.taxon" class="form-control" required></select>
       </div>
+
+      <update-species-office-list offices="officeList" species="species"></update-species-office-list>
+
       <div class="form-group">
-        <label for="leadOffice">Lead Office:</label>
+        <label for="leadOffice">OLD LEAD OFFICE:</label>
         <select ng-model="species.leadOffice" class="form-control" id="leadOffice" required>
           <option disabled selected> Select an Office </option>
           <option value="Daphne">Daphne, AL</option>
@@ -46,6 +49,7 @@
           <option value="Region 6">Mountain-Prairie Region</option>
         </select>
       </div>
+
       <species-status options="statusList" statuses="species.status"></species-status><br><br><br>
 
       <div class="form-group">
