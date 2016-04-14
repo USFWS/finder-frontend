@@ -1,8 +1,8 @@
 'use strict';
 
-var API_URL = 'http://arsf.us-east-1.elasticbeanstalk.com/';
+// var API_URL = 'http://arsf.us-east-1.elasticbeanstalk.com/';
 // var API_URL = 'http://finder.us-east-1.elasticbeanstalk.com/';
-// var API_URL = 'http://localhost:1337/';
+var API_URL = 'http://localhost:1337/';
 
 angular.module('frontendApp')
   .config(function($urlRouterProvider, $stateProvider, $authProvider, toastrConfig) {
@@ -45,7 +45,12 @@ angular.module('frontendApp')
       .state('species.create', {
         url: '/create',
         templateUrl: 'species/create.html',
-        controller: 'CreateSpeciesCtrl'
+        controller: 'CreateSpeciesCtrl',
+        resolve: {
+          officeList: function(Office) {
+            return Office.getOffices();
+          }
+        }
       })
 
       .state('species.update', {
@@ -55,6 +60,9 @@ angular.module('frontendApp')
         resolve: {
           selectedSpecies: function(Species, $stateParams) {
             return Species.getOne($stateParams.id);
+          },
+          officeList: function(Office) {
+            return Office.getOffices();
           }
         }
       })
@@ -145,6 +153,50 @@ angular.module('frontendApp')
         resolve: {
           allUsers: function(User) {
             return User.getUsers();
+          }
+        }
+      })
+
+      .state('offices', {
+        url: '/offices',
+        templateUrl: 'offices/main.html'
+      })
+
+      .state('offices.create', {
+        url: '/create',
+        templateUrl: 'offices/create.html',
+        controller: 'OfficeCreateCtrl'
+      })
+
+      .state('offices.detail', {
+        url: '/detail/:id',
+        templateUrl: 'offices/detail.html',
+        controller: 'OfficeDetailCtrl',
+        resolve: {
+          theOffice: function(Office, $stateParams) {
+            return Office.getOffice($stateParams.id);
+          }
+        }
+      })
+
+      .state('offices.update', {
+        url: '/update/:id',
+        templateUrl: 'offices/update.html',
+        controller: 'OfficeUpdateCtrl',
+        resolve: {
+          theOffice: function(Office, $stateParams) {
+            return Office.getOffice($stateParams.id);
+          }
+        }
+      })
+
+      .state('offices.list', {
+        url: '/list',
+        templateUrl: 'offices/list.html',
+        controller: 'OfficeListCtrl',
+        resolve: {
+          officeList: function (Office) {
+            return Office.getOffices();
           }
         }
       });
