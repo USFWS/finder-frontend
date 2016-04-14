@@ -1,0 +1,24 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2 class="panel-title">{{ office.name }} <span class="pull-right">{{ office.adminRegion }} Region</span></h2>
+  </div>
+  <div class="panel-body">
+    <div class="office-card">
+      <button class="btn btn-sm btn-success pull-right" ui-sref="offices.update({ id: office.id })" style="margin-left: 1em;"><span class="fa fa-edit"></span> Edit</button>
+      <button class="btn btn-sm btn-danger pull-right" ng-click="destroy(office)"><span class="fa fa-trash"></span>  Delete</button>
+      <address>
+        {{ office.street }} <br>
+        {{ office.city }}, {{ office.state }} {{ office.zip }} <br>
+      </address>
+      {{ office.phone }} <br>
+      {{ office.email }} <br>
+      <a href="{{ office.url }}">{{ office.url }}</a> <br>
+
+      <h3>{{ office.species.length }} Associated Species</h3>
+      <p>The following list of species have been associated with the {{ office.name }}.</p>
+      <ul>
+        <li ng-repeat="species in office.species"><a ui-sref="species.detail({ id: species.id })">{{ species.commonName }}, (<em>{{ species.scientificName }}</em>)</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
