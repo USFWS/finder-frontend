@@ -8,10 +8,11 @@
  * Controller of the frontendApp
  */
 angular.module('frontendApp')
-  .controller('CreateSpeciesCtrl', function ($scope, SpeciesModel, Map, STATUS_LIST, TAXON_LIST) {
+  .controller('CreateSpeciesCtrl', function ($scope, SpeciesModel, Map, PickList, officeList) {
     var clickHandler = false;
-    $scope.taxonList = TAXON_LIST;
-    $scope.statusList = STATUS_LIST;
+    $scope.officeList = officeList.sort(alphabetize);
+    $scope.taxonList = PickList.TAXON_LIST;
+    $scope.statusList = PickList.STATUS_LIST;
     $scope.species = new SpeciesModel({});
     $scope.center = {
       lat: 34.8934492,
@@ -19,13 +20,22 @@ angular.module('frontendApp')
       zoom: 3
     };
 
+    function alphabetize(a,b) {
+      if (a.name < b.name) return -1;
+      else if (a.name > b.name) return 1;
+      else return 0;
+    }
+
     $scope.create = function(species) {
       if ( species.validate() ) {
-        species.create();
-        $scope.species = new SpeciesModel({});
-        Map.clearStates($scope.geojson).then(function (response) {
-          $scope.geojson = response.data;
-          $scope.loadMap();
+        species.create().then(function (response) {
+          if (response.status === 201) {
+            $scope.species = new SpeciesModel({});
+            Map.clearStates($scope.geojson).then(function (response) {
+              $scope.geojson = response.data;
+              $scope.loadMap();
+            });
+          }
         });
       }
     };
