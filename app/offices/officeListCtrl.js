@@ -9,7 +9,7 @@
    * Controller of the frontendApp
    */
   angular.module('frontendApp')
-    .controller('OfficeListCtrl', function ($scope, officeList, User) {
+    .controller('OfficeListCtrl', ['$scope', 'officeList', 'User', function ($scope, officeList, User) {
       $scope.offices = officeList;
 
       $scope.isAdmin = function() {
@@ -25,6 +25,6 @@
         $scope.offices.splice(index, 1);
         office.destroy();
       };
-    });
+    }]);
 
 })();

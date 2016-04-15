@@ -9,7 +9,7 @@
    * Controller of the frontendApp
    */
   angular.module('frontendApp')
-    .controller('OfficeUpdateCtrl', function ($scope, theOffice, PickList) {
+    .controller('OfficeUpdateCtrl', ['$scope', 'theOffice', 'PickList', function ($scope, theOffice, PickList) {
       $scope.office = theOffice;
       $scope.stateList = PickList.STATE_LIST;
       $scope.regionList = PickList.REGION_LIST;
@@ -17,6 +17,6 @@
       $scope.update = function (office) {
         if (office.validate()) office.update();
       };
-    });
+    }]);
 
 })();

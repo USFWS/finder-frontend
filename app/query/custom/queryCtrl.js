@@ -9,7 +9,7 @@
    * Controller of the frontendApp
    */
   angular.module('frontendApp')
-    .controller('QueryCtrl', function ($scope, $httpParamSerializerJQLike, Map, Query, toastr, SpeciesModel, PickList, officeList) {
+    .controller('QueryCtrl', ['$scope', '$httpParamSerializerJQLike', 'Map', 'Query', 'PickList', 'officeList', function ($scope, $httpParamSerializerJQLike, Map, Query, PickList, officeList) {
       var clickHandler = false;
       $scope.officeList = officeList;
       $scope.statusList = PickList.STATUS_LIST;
@@ -73,20 +73,6 @@
         });
       };
 
-      $scope.getQuery = function () {
-        var searchTerms = [];
-        if ($scope.query.status) searchTerms.push($scope.query.status);
-        if ($scope.query.taxon) searchTerms.push($scope.query.taxon);
-        if ($scope.query.office) searchTerms.push($scope.query.office);
-        if ($scope.query.range.length > 0) {
-          searchTerms.push('Range: ');
-          angular.forEach($scope.query.range, function (state) {
-            searchTerms.push(state);
-          });
-        }
-        return searchTerms.join(' ');
-      };
-
       $scope.loadMap();
-    });
+    }]);
 })();

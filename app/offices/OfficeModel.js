@@ -8,7 +8,7 @@
    * # A Model representing a User of the At Risk Species Finder
    */
   angular.module('frontendApp')
-    .factory('OfficeModel', function ($http, API_URL, toastr) {
+    .factory('OfficeModel', ['$http', 'API_URL', 'toastr', function ($http, API_URL, toastr) {
       var OfficeModel = function(data) {
         this.id = data.id;
         this.name = data.name;
@@ -65,5 +65,5 @@
       };
 
       return OfficeModel;
-    });
+    }]);
 })();

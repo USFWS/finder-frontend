@@ -9,7 +9,7 @@
    * Controller of the frontendApp
    */
   angular.module('frontendApp')
-    .controller('HomeCtrl', function ($scope, SpeciesList, PickList) {
+    .controller('HomeCtrl', ['$scope', 'SpeciesList', 'PickList', function ($scope, SpeciesList, PickList) {
       $scope.species = {
         list: SpeciesList,
         listed: speciesByCategory(PickList.PROTECTED, SpeciesList),
@@ -36,5 +36,5 @@
         });
         return filtered;
       }
-    });
+    }]);
 })();

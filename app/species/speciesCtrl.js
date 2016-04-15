@@ -9,7 +9,7 @@
    * Controller of the frontendApp
    */
   angular.module('frontendApp')
-    .controller('SpeciesCtrl', function ($scope, theSpecies, Map, $state) {
+    .controller('SpeciesCtrl', ['$scope', 'theSpecies', 'Map', '$state', function ($scope, theSpecies, Map, $state) {
 
       $scope.species = theSpecies;
       $scope.center = {
@@ -36,6 +36,6 @@
 
       $scope.loadMap();
 
-    });
+    }]);
 
 })();

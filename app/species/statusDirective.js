@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('frontendApp')
-    .directive('speciesStatus', function (toastr) {
+    .directive('speciesStatus', ['toastr', function (toastr) {
       return {
         restrict: 'E',
         templateUrl: '/species/statusTemplate.html',
@@ -42,5 +42,5 @@
           }
         }
       };
-    });
+    }]);
 })();
