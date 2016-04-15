@@ -199,3 +199,13 @@ footer li {
   display: inline-block;
   margin-right: 15px;
 }
+
+.at-risk-statistics {
+  list-style: none;
+  font-size: 1.2em;
+}
+
+.text-container {
+  margin: 20px auto;
+  max-width: 650px;
+}
