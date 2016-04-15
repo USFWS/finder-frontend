@@ -6,7 +6,8 @@
   var API_URL = 'http://localhost:1337/';
 
   angular.module('frontendApp')
-    .config(function($urlRouterProvider, $stateProvider, $authProvider, toastrConfig) {
+    .constant('API_URL', API_URL)
+    .config(['$urlRouterProvider', '$stateProvider', '$authProvider', 'toastrConfig', function($urlRouterProvider, $stateProvider, $authProvider, toastrConfig) {
       $urlRouterProvider.otherwise('/species/list');
 
       $stateProvider
@@ -224,7 +225,7 @@
       angular.extend(toastrConfig, {
         positionClass: 'toast-top-left'
       });
-    })
-    .constant('API_URL', API_URL);
+
+    }]);
 
 })();
