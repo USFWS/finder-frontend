@@ -1,27 +1,25 @@
 <div class="container">
+
   <div class="jumbotron">
     <h1>At-Risk Species Finder</h1>
-    <p>U.S. Fish and Wildlife Service</p>
-  </div>
+    <p>U.S. Fish and Wildlife Service</p><br><br>
 
-  <h2>At-Risk Species Snapshot</h2>
-  <p>There are currently {{ species.list.length }} Species in the Database:</p>
-  <ul>
-    <li>Petitioned {{ species['Petitioned'].length }}</li>
-    <li>Petition Withdrawn {{ species['Petition Withdrawn'].length }}</li>
-    <li>Candidate {{ species['Candidate'].length }}</li>
-    <li>Candidate Removal {{ species['Candidate Removal'].length }}</li>
-    <li>Substantial 90-day Finding {{ species['Substantial 90-day Finding'].length }}</li>
-    <li>Not Substantial 90-day Finding {{ species['Not Substantial 90-day Finding'].length }}</li>
-    <li>Warranted 12-month Finding {{ species['Warranted 12-month Finding'].length }} </li>
-    <li>Not Warranted 12-month Finding {{ species['Not Warranted 12-month Finding'].length }} </li>
-    <li>Proposed for Listing as Threatened {{ species['Proposed for Listing as Threatened'].length }}</li>
-    <li>Proposed for Listing as Endangered {{ species['Proposed for Listing as Endangered'].length }}</li>
-    <li>Final Listing as Threatened {{ species['Final Listing as Threatened'].length }}</li>
-    <li>Final Listing as Endangered {{ species['Final Listing as Endangered'].length }}</li>
-  </ul>
-  <p>{{ species.listed.length }} Species have been protected under the Endangered Species Act (ESA)</p>
-  <p>{{ species.lessProtection.length }} Species do not need additional protection</p>
+    <p>There are currently {{ species.list.length }} Species in the Database:</p>
+    <ul class="at-risk-statistics">
+      <li>{{ species['Petitioned'].length }} Petitioned Species</li>
+      <li>{{ species['Petition Withdrawn'].length }} Species have had their Petition Withdrawn</li>
+      <li>{{ species['Candidate'].length }} Candidate Species</li>
+      <li>{{ species['Candidate Removal'].length }} Species have been removed from the Candidate List</li>
+      <li>{{ species['Substantial 90-day Finding'].length }} Species have had a Substantial 90-day Finding</li>
+      <li>{{ species['Not Substantial 90-day Finding'].length }} Species have had a Not Substantial 90-day Finding</li>
+      <li>{{ species['Warranted 12-month Finding'].length }} Species have had a Warranted 12-month Finding</li>
+      <li>{{ species['Not Warranted 12-month Finding'].length }} Species have had a Not Warranted 12-month Finding</li>
+      <li>{{ species['Proposed for Listing as Threatened'].length }} Species have been Proposed for Listing as Threatened</li>
+      <li>{{ species['Proposed for Listing as Endangered'].length }} Species have been Proposed for Listing as Endangered</li>
+      <li>{{ species['Final Listing as Threatened'].length }} Species have had their Final Listing as Threatened</li>
+      <li>{{ species['Final Listing as Endangered'].length }} Species have had their Final Listing as Endangered</li>
+    </ul>
+  </div>
 
   <h2>Our Goal</h2>
   <p>Work with public and private partners to proactively conserve as many of these at-risk species as possible over the next decade, and hopefully prevent the need to list them under the Endangered Species Act.</p>
