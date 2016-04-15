@@ -13,7 +13,7 @@
       var geojson = null;
 
       function getGeoJSON() {
-        return $http.get('./map/usa.geo.json');
+        return $http.get('./data/usa.geo.json');
       }
 
       function getStates(states) {
