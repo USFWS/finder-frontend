@@ -1,5 +1,9 @@
 <h2 ng-if="query" class="visible-print text-center">Query: {{ query }}</h2>
 
+<p class="hidden-print text-container">Below is a list of all At-Risk Species currently in the Finder.  Enter a search term (species name, status, taxon, state range, etc.) to automatically filter the list.  Use the 'More info' button to explore all available data for a given species.</p>
+
+<p class="hidden-print text-container">Mobile users will find that the 'Summary' view is much easier to navigate on small screens.</p>
+
 <div class="text-center">
   <div class="btn-group view-group hidden-print" role="group">
     <a ui-sref-active="active" ui-sref="species.list" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-align-justify"></span>&nbsp;&nbsp;&nbsp;Table</a>
