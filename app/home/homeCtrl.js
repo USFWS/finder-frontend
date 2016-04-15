@@ -19,7 +19,6 @@
       angular.forEach(PickList.STATUS_LIST, function (status) {
         $scope.species[status] = speciesByStatus(status, SpeciesList);
       });
-      console.log($scope.species);
 
       function speciesByCategory(category, list) {
         var filtered = [];
