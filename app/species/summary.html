@@ -1,6 +1,6 @@
 <h2 ng-if="query" class="visible-print text-center">Query: {{ query }}</h2>
 
-<div class="text-center">
+<div class="text-center text-container">
   <div class="btn-group view-group hidden-print" role="group">
     <a ui-sref-active="active" ui-sref="species.list" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-align-justify"></span>&nbsp;&nbsp;&nbsp;Table</a>
     <a ui-sref-active="active" ui-sref="species.summary" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-phone"></span>&nbsp;&nbsp;&nbsp;Summary</a>
@@ -15,7 +15,7 @@
   </div>
 </div>
 
-<ul class="list-group" ng-init="getSpecies()">
+<ul class="list-group text-container">
   <li ng-repeat="animal in species | filter: query" class="list-group-item">
     <h3>{{ animal.commonName }}&nbsp;&nbsp;&nbsp;<em>({{ animal.scientificName }})</em></h3>
     <p>Current Status: {{ animal.currentStatus() }}</p>
