@@ -1,6 +1,8 @@
 <div class="hidden-print">
   <p>Use the form below to create a custom query.  Any combination of fields will create an <strong>AND</strong> query, which will return only those records that meet <strong>all</strong> of the query criteria will be returned.</p>
 
+  <p>Selecting more than one option for a given field results in an <strong>OR</strong> query. If, for example, you select Amphibian and Bee from the taxon list it will return all species that are either in the amphibian or a bee taxonomic group.</p>
+
   <p>When querying by a species range you have two options.  Selecting the <strong>Any</strong> radio button will return species that includes any of the states included in your query.  The <strong>All</strong> option will only return those species who&rsquo;s range includes every state included in the query.</p>
 
   <p>Results will be displayed at the bottom of this page in a printer friendly format.  To print, use the browser's Print option from the file menu.</p>
@@ -14,38 +16,22 @@
     <form ng-submit="queryDatabase()">
       <div class="form-group">
         <label for="status-list">Current Status:</label>
-        <select ng-options="str for str in statusList" ng-model="query.status" class="form-control" id="status-list"></select>
+        <select ng-options="str for str in statusList" ng-model="query.status" class="form-control" id="status-list" multiple></select>
       </div>
       <div class="form-group">
         <label for="taxon-list">Taxonomic Group:</label>
-        <select ng-options="str for str in taxonList" ng-model="query.taxon" class="form-control" multiple id="taxon-list"></select>
+        <select ng-options="str for str in taxonList" ng-model="query.taxon" class="form-control" id="taxon-list" multiple></select>
       </div>
       <div class="form-group">
-        <label for="leadOffice">Lead Office:</label>
-        <select multiple ng-model="query.leadOffice" class="form-control" id="leadOffice">
-          <option value="Daphne">Daphne, AL</option>
-          <option value="Arkansas">Conway, AR</option>
-          <option value="Jacksonville">Jacksonville, FL</option>
-          <option value="Panama City">Panama City, FL</option>
-          <option value="SouthFlorida">Vero Beach, FL</option>
-          <option value="Athens">Athens, GA</option>
-          <option value="Kentucky">Frankfort, KY</option>
-          <option value="Lafayette">Lafayette, LA</option>
-          <option value="Jackson">Jackson, MS</option>
-          <option value="Asheville">Asheville, NC</option>
-          <option value="Raleigh">Raleigh, NC</option>
-          <option value="Charleston">Charleston, SC</option>
-          <option value="Cookeville">Cookeville, TN</option>
-          <option value="Caribbean">Boqueron, PR</option>
-          <option value="Region 2">Southwest Region</option>
-          <option value="Region 3">Midwest Region</option>
-          <option value="Region 4">Southeast Region</option>
-          <option value="Region 5">Northeast Region</option>
-          <option value="Region 6">Mountain-Prairie Region</option>
-        </select>
+        <label for="offices">Lead Office:</label>
+        <select ng-options="office.name for office in officeList" ng-model="query.offices" class="form-control" id="offices" multiple></select>
+      </div>
+      <div class="form-group">
+        <label for="region">Lead Region:</label>
+        <select ng-options="region for region in regionList" ng-model="query.regions" class="form-control" id="regions" multiple></select>
       </div>
 
-      <div class="form-group" ng-init="loadMap()">
+      <div class="form-group">
         <label>Species Range:</label>
         <input type="radio" ng-model="query.rangeQueryType" name="stateQuery" value="any">&nbsp;&nbsp;Any&nbsp;&nbsp;
         <input type="radio" ng-model="query.rangeQueryType" name="stateQuery" value="all">&nbsp;&nbsp;All
@@ -53,36 +39,13 @@
       </div>
 
       <button type="submit" class="btn btn-info btn-block">
-        &nbsp;&nbsp;&nbsp;Query <span ng-if="loading.query" class="fa fa-spin fa-gear"></span>
+        Query <span ng-if="loading.query" class="fa fa-spin fa-gear"></span>
       </button>
     </form><br>
-    <button class="btn btn-default btn-block" ng-click="resetQuery()">
+    <button class="btn btn-default btn-block" type="button" ng-click="resetQuery()">
       &nbsp;&nbsp;&nbsp;Reset <span ng-if="loading.reset" class="fa fa-spin fa-gear"></span>
     </button>
   </div>
 </div>
 
-<h3 ng-if="results">Query: {{ getQuery() }}</h3>
-<h3 ng-if="results">Returned {{ results.length }} species</h3>
-<table ng-if="results" class="table table-striped query-results" ts-wrapper>
-  <thead>
-    <tr>
-      <th ts-criteria="scientificName">Scientific Name</th>
-      <th ts-criteria="commonName">Common Name</th>
-      <th ts-criteria="currentStatus()">Current Status</th>
-      <th ts-criteria="taxon" ts-default>Taxon</th>
-      <th ts-criteria="leadOffice">Lead Office</th>
-      <th>State Range</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="result in results" ts-repeat>
-      <td>{{ result.scientificName }}</td>
-      <td>{{ result.commonName }}</td>
-      <td>{{ result.currentStatus() }}</td>
-      <td>{{ result.taxon }}</td>
-      <td>{{ result.leadOffice }}</td>
-      <td>{{ result.range.join(', ') }}</td>
-    </tr>
-  </tbody>
-</table>
+<div ng-show="results.length > 0" ng-include="'partials/query-results.html'"></div>
