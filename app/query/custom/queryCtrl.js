@@ -14,6 +14,7 @@
       $scope.officeList = officeList;
       $scope.statusList = PickList.STATUS_LIST;
       $scope.taxonList = PickList.TAXON_LIST;
+      $scope.regionList = PickList.REGION_LIST;
       $scope.loading = { reset: false, query: false };
       $scope.query = { range: [], rangeQueryType: 'any' };
       $scope.center = {
@@ -23,8 +24,15 @@
       };
 
       $scope.queryDatabase = function() {
-        var query = $httpParamSerializerJQLike($scope.query);
+        var query;
+        var officeNames = [];
         $scope.loading.query = true;
+
+        angular.forEach($scope.query.offices, function (office) {
+          officeNames.push(office.name);
+        });
+        $scope.query.offices = officeNames;
+        query = $httpParamSerializerJQLike($scope.query);
 
         Query.custom(query)
           .then(function (species) {
@@ -78,5 +86,7 @@
         }
         return searchTerms.join(' ');
       };
+
+      $scope.loadMap();
     });
 })();
