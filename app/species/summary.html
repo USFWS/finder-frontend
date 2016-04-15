@@ -2,14 +2,14 @@
 
 <div class="text-center text-container">
   <div class="btn-group view-group hidden-print" role="group">
-    <a ui-sref-active="active" ui-sref="species.list" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-align-justify"></span>&nbsp;&nbsp;&nbsp;Table</a>
-    <a ui-sref-active="active" ui-sref="species.summary" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-phone"></span>&nbsp;&nbsp;&nbsp;Summary</a>
+    <a ui-sref-active="active" ui-sref="species.list" type="button" class="btn btn-primary"><span class="fa fa-align-justify"></span>&nbsp;&nbsp;&nbsp;Table</a>
+    <a ui-sref-active="active" ui-sref="species.summary" type="button" class="btn btn-primary"><span class="fa fa-mobile"></span>&nbsp;&nbsp;&nbsp;Summary</a>
   </div>
 
   <div class="form-group hidden-print">
     <label class="sr-only">Query Species</label>
     <div class="input-group">
-      <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+      <div class="input-group-addon"><span class="fa fa-search"></span></div>
       <input type="search" class="form-control" ng-model="query" placeholder="Enter term to filter species" ng-model-options="{ debounce: 1000 }">
     </div>
   </div>
@@ -23,7 +23,7 @@
     <p>Lead Office: {{ animal.getLeadOfficeName() }}</p>
     <p>Range: {{ animal.range.join(', ') }} </span></p>
     <a ui-sref="species.detail({ id: animal.id })" class="btn btn-sm btn-primary hidden-print"><span class="fa fa-info-circle"></span> More Info</a>
-    <a ng-show="isEditor() || isAdmin()" class="btn btn-sm btn-success hidden-print" ui-sref="species.update({ id: animal.id })"><span class="glyphicon glyphicon-edit"></span>&nbsp;Edit</a>
-    <button ng-show="isAdmin()" class="btn btn-sm btn-danger hidden-print" ng-click="remove(animal)"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</button>
+    <a ng-show="isEditor() || isAdmin()" class="btn btn-sm btn-success hidden-print" ui-sref="species.update({ id: animal.id })"><span class="fa fa-edit"></span>&nbsp;Edit</a>
+    <button ng-show="isAdmin()" class="btn btn-sm btn-danger hidden-print" ng-click="remove(animal)"><span class="fa fa-trash"></span>&nbsp;Delete</button>
   </li>
 </ul>
