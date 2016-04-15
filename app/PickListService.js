@@ -116,6 +116,17 @@
       'Final Listing as Endangered'
     ];
 
+    var FINISHED = [
+      'Final Listing as Threatened due to Similarity of Appearance',
+      'Final Listing as Endangered due to Similarity of Appearance',
+      'Final Listing as Threatened',
+      'Final Listing as Endangered',
+      'Candidate Removal',
+      'Petition Withdrawn',
+      'Not Substantial 90-day Finding',
+      'Not Warranted 12-month Finding'
+    ];
+
     var REGION_LIST = [
         'Pacific',
         'Southwest',
@@ -129,12 +140,13 @@
       ];
 
     return {
-      TAXON_LIST: TAXON_LIST,
-      STATUS_LIST: STATUS_LIST,
+      TAXON_LIST: TAXON_LIST.sort(),
+      STATUS_LIST: STATUS_LIST.sort(),
       REGION_LIST: REGION_LIST,
-      STATE_LIST: STATE_LIST,
-      PROTECTED: PROTECTED,
-      DOES_NOT_NEED_PROTECTION: DOES_NOT_NEED_PROTECTION
+      STATE_LIST: STATE_LIST.sort(),
+      PROTECTED: PROTECTED.sort(),
+      DOES_NOT_NEED_PROTECTION: DOES_NOT_NEED_PROTECTION.sort(),
+      FINISHED: FINISHED.sort()
     };
 
   });
