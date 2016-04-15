@@ -20,9 +20,10 @@
     <h3>{{ animal.commonName }}&nbsp;&nbsp;&nbsp;<em>({{ animal.scientificName }})</em></h3>
     <p>Current Status: {{ animal.currentStatus() }}</p>
     <p>Taxon: {{ animal.taxon }}</p>
-    <p>Lead Office: {{ animal.leadOffice }}</p>
+    <p>Lead Office: {{ animal.getLeadOfficeName() }}</p>
     <p>Range: {{ animal.range.join(', ') }} </span></p>
-    <a ng-show="isEditor() || isAdmin()"class="btn btn-sm btn-success hidden-print" ui-sref="species.update({ id: animal.id })"><span class="glyphicon glyphicon-edit"></span>&nbsp;Edit</a>
+    <a ui-sref="species.detail({ id: animal.id })" class="btn btn-sm btn-primary hidden-print"><span class="fa fa-info-circle"></span> More Info</a>
+    <a ng-show="isEditor() || isAdmin()" class="btn btn-sm btn-success hidden-print" ui-sref="species.update({ id: animal.id })"><span class="glyphicon glyphicon-edit"></span>&nbsp;Edit</a>
     <button ng-show="isAdmin()" class="btn btn-sm btn-danger hidden-print" ng-click="remove(animal)"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</button>
   </li>
 </ul>
