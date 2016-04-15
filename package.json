@@ -1,9 +1,23 @@
 {
   "name": "frontend",
   "version": "0.0.0",
+  "watch": {
+    "htmlmin": "app/*.html"
+  },
+  "scripts": {
+    "watch": "npm-watch",
+    "htmlmin": "node build/htmlmin",
+    "usemin": "usemin app/index.html --dest dist --output dist/index.html",
+    "prebuild": "rimraf dist/*",
+    "build": "npm run usemin && npm run htmlmin"
+  },
   "dependencies": {},
-  "repository": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/USFWS/finder-frontend"
+  },
   "devDependencies": {
+    "glob": "^7.0.3",
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^2.0.0",
     "grunt-concurrent": "^1.0.0",
@@ -25,8 +39,11 @@
     "grunt-svgmin": "^2.0.0",
     "grunt-usemin": "^3.0.0",
     "grunt-wiredep": "^2.0.0",
+    "html-minifier": "^1.5.0",
     "jshint-stylish": "^1.0.0",
     "load-grunt-tasks": "^3.1.0",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.2",
     "time-grunt": "^1.0.0"
   },
   "engines": {
