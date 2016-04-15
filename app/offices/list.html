@@ -4,7 +4,7 @@
   <div class="form-group hidden-print">
     <label class="sr-only">Query Species</label>
     <div class="input-group">
-      <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+      <div class="input-group-addon"><span class="fa fa-search"></span></div>
       <input type="search" class="form-control" ng-model="query" placeholder="Enter term to filter offices" ng-model-options="{ debounce: 1000 }">
     </div>
   </div>
@@ -36,10 +36,10 @@
         <button ui-sref="offices.detail({ id: office.id })" class="btn btn-sm btn-primary" title="More info"><span class="fa fa-eye"></span></button>
       </td>
       <td ng-if="isAdmin() || isEditor()" class="hidden-print">
-        <button ui-sref="offices.update({ id: office.id })" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-edit"></span></button>
+        <button ui-sref="offices.update({ id: office.id })" class="btn btn-sm btn-success"><span class="fa fa-edit"></span></button>
       </td>
       <td ng-if="isAdmin()" class="hidden-print">
-        <button ng-click="remove(office)" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+        <button ng-click="remove(office)" class="btn btn-sm btn-danger"><span class="fa fa-trash"></span></button>
       </td>
     </tr>
   </tbody>
