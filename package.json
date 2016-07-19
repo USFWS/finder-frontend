@@ -9,7 +9,9 @@
     "htmlmin": "node build/htmlmin",
     "usemin": "usemin app/index.html --dest dist --output dist/index.html",
     "prebuild": "rimraf dist/*",
-    "build": "npm run usemin && npm run htmlmin"
+    "build": "grunt build",
+    "wiredep": "grunt wiredep",
+    "start": "grunt serve"
   },
   "dependencies": {},
   "repository": {
@@ -20,6 +22,7 @@
     "glob": "^7.0.3",
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^2.0.0",
+    "grunt-cli": "^1.2.0",
     "grunt-concurrent": "^1.0.0",
     "grunt-connect-proxy": "^0.2.0",
     "grunt-contrib-clean": "^0.6.0",
