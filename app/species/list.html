@@ -37,7 +37,7 @@
   <tbody>
     <!-- <tr ng-if=""></tr> If the length of the filtered list is 0 -->
     <tr ng-repeat="animal in species | filter:query" ts-repeat>
-      <td>{{ animal.scientificName }}</td>
+      <td><em>{{ animal.scientificName }}</em></td>
       <td>{{ animal.commonName }}</td>
       <td>{{ animal.currentStatus() }}</td>
       <td>{{ animal.taxon }}</td>
