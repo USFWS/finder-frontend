@@ -1,9 +1,7 @@
 (function () {
   'use strict';
-
-  // var API_URL = 'http://arsf.us-east-1.elasticbeanstalk.com/';
-  // var API_URL = 'http://finder.us-east-1.elasticbeanstalk.com/';
-  var API_URL = 'http://localhost:1337/';
+  // var API_URL = 'http://localhost:1337/';
+  var API_URL = 'https://finder.royhewitt.com/';
 
   angular.module('frontendApp')
     .constant('API_URL', API_URL)
@@ -218,7 +216,7 @@
       $authProvider.registerUrl = API_URL + 'auth/register';
       $authProvider.google({
         url: API_URL + 'auth/google',
-        redirectUri: 'http://localhost:9000',
+        redirectUri: 'https://www.fws.gov/southeast/candidateconservation/finder2/',
         clientId: '302206927623-uvp8uhlid7kj6a7hcpsa3rugipluouc9.apps.googleusercontent.com'
       });
 
