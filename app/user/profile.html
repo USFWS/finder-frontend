@@ -18,7 +18,8 @@
       </div>
       <div class="form-group">
         <label for="accountType">Account Type</label>
-        <select ng-model="user.accountType" class="form-control" id="accountType">
+        <!-- Should be disabled if you're not an admin -->
+        <select ng-model="user.accountType" ng-disabled="!isAdmin()" class="form-control" id="accountType">
           <option value="admin">Admin</option>
           <option value="editor">Editor</option>
           <option value="viewer">Viewer</option>
