@@ -5,7 +5,7 @@
     .directive('updateSpeciesOfficeList', function () {
       return {
         restrict: 'E',
-        templateUrl: '/species/updateSpeciesOfficeList.html',
+        templateUrl: './species/updateSpeciesOfficeList.html',
         scope: {
           species: '=',
           offices: '='

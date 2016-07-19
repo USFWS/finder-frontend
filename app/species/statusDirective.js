@@ -5,7 +5,7 @@
     .directive('speciesStatus', ['toastr', function (toastr) {
       return {
         restrict: 'E',
-        templateUrl: '/species/statusTemplate.html',
+        templateUrl: './species/statusTemplate.html',
         scope: {
           statuses: '=',
           options: '='
