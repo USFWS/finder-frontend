@@ -1,6 +1,6 @@
 <div ts-wrapper ng-if="results" class="panel panel-success" id="query-results">
   <div class="panel-heading">
-    <h2 class="panel-title" ng-if="!query.terms">Query Results</h2>
+    <h2 class="panel-title" ng-if="!query.terms">Query Results <span class="pull-right">{{ results.length }} species</span></h2>
     <h2 class="panel-title" ng-if="query.terms">{{ query.terms }} <span class="pull-right">{{ results.length }} species</span></h2>
   </div>
   <table class="table table-striped">
