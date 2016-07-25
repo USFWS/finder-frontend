@@ -12,6 +12,7 @@
     .controller('SpeciesCtrl', ['$scope', 'theSpecies', 'Map', '$state', function ($scope, theSpecies, Map, $state) {
 
       $scope.species = theSpecies;
+      $scope.mapDefaults = { scrollWheelZoom: false };
       $scope.center = {
         lat: 34.8934492,
         lng: -94.1480978,

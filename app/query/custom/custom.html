@@ -35,7 +35,7 @@
         <label>Species Range:</label>
         <input type="radio" ng-model="query.rangeQueryType" name="stateQuery" value="any">&nbsp;&nbsp;Any&nbsp;&nbsp;
         <input type="radio" ng-model="query.rangeQueryType" name="stateQuery" value="all">&nbsp;&nbsp;All
-        <leaflet geojson="geojson" center="center" style="height: 300px;"></leaflet>
+        <leaflet geojson="geojson" center="center" defaults="mapDefaults" style="height: 300px;"></leaflet>
       </div>
 
       <button type="submit" class="btn btn-info btn-block">

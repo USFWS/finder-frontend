@@ -19,6 +19,6 @@
         <li ng-repeat="status in species.status">{{ status.date | date:shortDate }}: <a href="{{ status.url }}" target="_blank">{{ status.name }}</a></li>
       </ul>
     </div>
-    <leaflet geojson="geojson" center="center" style="height: 300px;"></leaflet>
+    <leaflet geojson="geojson" center="center" defaults="mapDefaults" style="height: 300px;"></leaflet>
   </div>
 </div>

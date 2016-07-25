@@ -12,6 +12,7 @@
     .controller('CreateSpeciesCtrl', ['$scope', 'SpeciesModel', 'Map', 'PickList', 'officeList', function ($scope, SpeciesModel, Map, PickList, officeList) {
       var clickHandler = false;
       $scope.officeList = officeList;
+      $scope.mapDefaults = { scrollWheelZoom: false };
       $scope.taxonList = PickList.TAXON_LIST;
       $scope.statusList = PickList.STATUS_LIST;
       $scope.species = new SpeciesModel({});

@@ -11,6 +11,7 @@
   angular.module('frontendApp')
     .controller('QueryCtrl', ['$scope', '$httpParamSerializerJQLike', 'Map', 'Query', 'PickList', 'officeList', function ($scope, $httpParamSerializerJQLike, Map, Query, PickList, officeList) {
       var clickHandler = false;
+      $scope.mapDefaults = { scrollWheelZoom: false };
       $scope.officeList = officeList;
       $scope.statusList = PickList.STATUS_LIST;
       $scope.taxonList = PickList.TAXON_LIST;
