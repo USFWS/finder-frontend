@@ -1,11 +1,12 @@
 <div ts-wrapper ng-if="results" class="panel panel-success" id="query-results">
   <div class="panel-heading">
     <h2 class="panel-title" ng-if="!query.terms">Query Results</h2>
-    <h2 class="panel-title" ng-if="query.terms">{{ query.terms }}</h2>
+    <h2 class="panel-title" ng-if="query.terms">{{ query.terms }} <span class="pull-right">{{ results.length }} species</span></h2>
   </div>
   <table class="table table-striped">
     <thead>
       <tr>
+        <th>#</th>
         <th ts-criteria="scientificName">Scientific Name</th>
         <th ts-criteria="commonName">Common Name</th>
         <th ts-criteria="currentStatus()">Current Status</th>
@@ -16,6 +17,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="result in results" ts-repeat>
+        <td>{{ $index + 1 }}</td>
         <td>{{ result.scientificName }}</td>
         <td>{{ result.commonName }}</td>
         <td>{{ result.currentStatus() }}</td>
