@@ -17,7 +17,9 @@
       <h3>{{ office.species.length }} Associated Species</h3>
       <p>The following list of species have been associated with the {{ office.name }}.</p>
       <ul>
-        <li ng-repeat="species in office.species"><a ui-sref="species.detail({ id: species.id })">{{ species.commonName }}, (<em>{{ species.scientificName }}</em>)</a></li>
+        <li ng-repeat="animal in species | orderBy: currentStatus">
+          <p><a ui-sref="species.detail({ id: animal.id })">{{ animal.commonName }}, (<em>{{ animal.scientificName }}</em>)</a><br>Current status: {{ animal.currentStatus() }}</p>
+        </li>
       </ul>
     </div>
   </div>
