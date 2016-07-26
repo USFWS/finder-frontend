@@ -1,0 +1,33 @@
+<h1>Create a User</h1>
+<p>This is helpful when you want to assign a species to a biologist that hasn't used the Finder yet.  Admins can create an account on their behalf <strong>using their @fws.gov email address</strong> and begin to associate the new user with species.  Once they log in for the first time they'll &ldquo;claim&rdquo; their account that already exists rather than creating a brand new one.</p>
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h2 class="panel-title">Create a new User</h2>
+  </div>
+  <div class="panel-body">
+    <form ng-submit="create(user)">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input ng-model="user.name" type="text" class="form-control" id="name" placeholder="Jane Doe" required>
+      </div>
+      <div class="form-group">
+        <label for="organization">Organization:</label>
+        <input ng-model="user.organization" type="text" class="form-control" id="organization" placeholder="U.S. Fish and Wildlife Service" required>
+      </div>
+      <div class="form-group">
+        <label for="title">Job Title:</label>
+        <input ng-model="user.title" type="text" class="form-control" id="title" placeholder="Endangered Species Biologist" required>
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail Address:</label>
+        <input ng-model="user.email" type="text" class="form-control" id="email" placeholder="jane_doe@fws.gov" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input ng-model="user.phone" type="text" class="form-control" id="phone" placeholder="(404) 679-7300" required>
+      </div>
+      <button type="submit" class="btn btn-success btn-block">Create</button>
+    </form>
+  </div>
+</div>

@@ -15,17 +15,23 @@
         this.accountType = data.accountType;
         this.job = data.job;
         this.phone = data.phone;
+        this.organization = data.organization
         this.updatedAt = data.updatedAt;
       };
 
       UserModel.prototype.create = function () {
         var self = this;
         return $http.post(API_URL + 'user', self)
-          .then(function () {
+          .then(function (response) {
             toastr.success('Successfully created new user ' + self.email + '.');
+            return response;
           })
           .catch(function (response) {
-            toastr.error(response.statusText, 'Could not create new user.');
+            var details = [];
+            angular.forEach(response.data.invalidAttributes, function (invalid) {
+              this.push(invalid[0].message);
+            }, details);
+            toastr.error(details.join('. '), response.statusText);
           });
       };
 
@@ -36,7 +42,11 @@
             toastr.success('Successfully deleted user ' + self.email + '.');
           })
           .catch(function (response) {
-            toastr.error(response.statusText, 'Could not delete user.');
+            var details = [];
+            angular.forEach(response.data.invalidAttributes, function (invalid) {
+              this.push(invalid[0].message);
+            }, details);
+            toastr.error(details.join('. '), response.statusText);
           });
       };
 
@@ -47,22 +57,23 @@
             toastr.success('Successfully updated user ' + self.email + '.');
           })
           .catch(function (response) {
-            toastr.error(response.statusText, 'Could not update user.');
+            var details = [];
+            angular.forEach(response.data.invalidAttributes, function (invalid) {
+              this.push(invalid[0].message);
+            }, details);
+            toastr.error(details.join('. '), response.statusText);
           });
       };
 
       UserModel.prototype.validate = function () {
-        var validTypes = ['admin', 'editor', 'viewer'];
         var emailRegex = /^([a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6})$/gm;
         var isValidEmail = emailRegex.test(this.email);
-        var isValidType = validTypes.indexOf(this.accountType) > -1;
         if (!isValidEmail) {
           toastr.error('You must specify a valid email.');
           return false;
-        } else if (!isValidType) {
-          toastr.error('You chose an invalid account type.');
+        } else {
+          return true;
         }
-        return true;
       };
 
       UserModel.prototype.isAdmin = function () {
