@@ -17,7 +17,6 @@
           this.commonName = data.commonName;
           this.taxon = data.taxon;
           this.offices = data.offices || [];
-          this.leadOffice = data.leadOffice;
           this.range = data.range || [];
           this.status = data.status || [{}];
           this.updatedAt = data.updatedAt;
@@ -30,12 +29,15 @@
               return response;
             })
             .catch(function (response) {
-              toastr.error(response.statusText, 'Could not add new species to the database.');
+              var details = [];
+              angular.forEach(response.data.invalidAttributes, function (invalid) {
+                this.push(invalid[0].message);
+              }, details);
+              toastr.error(details.join('. '), response.statusText);
             });
         };
 
         SpeciesModel.prototype.update = function () {
-          console.log(this);
           delete this.leadOffice;
           return $http.put(API_URL + 'species/' + this.id, this)
             .then(function (response) {
@@ -43,7 +45,11 @@
               toastr.success('Successfully updated ' + response.data.scientificName + '.');
             })
             .catch(function (response) {
-              toastr.error(response.statusText, 'Could not add new species to the database.');
+              var details = [];
+              angular.forEach(response.data.invalidAttributes, function (invalid) {
+                this.push(invalid[0].message);
+              }, details);
+              toastr.error(details.join('. '), response.statusText);
             });
         };
 
@@ -54,7 +60,11 @@
               toastr.success('Successfully removed ' + species.scientificName + ' from the database.');
             })
             .catch(function (response) {
-              toastr.error(response.statusText, 'Could not remove species from the database.');
+              var details = [];
+              angular.forEach(response.data.invalidAttributes, function (invalid) {
+                this.push(invalid[0].message);
+              }, details);
+              toastr.error(details.join('. '), response.statusText);
             });
         };
 
