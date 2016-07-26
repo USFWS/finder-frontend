@@ -14,9 +14,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="isAuthenticated()"><a href="#" role="button" ng-click="login()">Login</a></li>
+        <li ng-hide="isAuthenticated()"><a href="javascript:void(0);" role="button" ng-click="login()">Login</a></li>
         <li ng-show="isAuthenticated()"><a ng-click="logout()" ui-sref="home">Logout</a></li>
-        <li class="dropdown" ui-sref-active="active"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Query <span class="caret"></span></a>
+        <li class="dropdown" ui-sref-active="active"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Query <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a ui-sref="query.list">List of Available Queries</a></li>
             <li><a ui-sref="query.status">Query by Current Status</a></li>
@@ -27,23 +27,27 @@
           </ul>
         </li>
         <li class="dropdown" ui-sref-active="active">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Species <span class="caret"></span></a>
+          <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Species <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a ui-sref="species.list">List</a></li>
             <li><a ng-show="isEditor() || isAdmin()" ui-sref="species.create">Create</a></li>
           </ul>
         </li>
-        <li class="dropdown" ui-sref-active="active"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Offices <span class="caret"></span></a>
+        <li class="dropdown" ui-sref-active="active">
+          <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Offices <span class="caret"></span>
+          </a>
           <ul class="dropdown-menu">
             <li><a ui-sref="offices.list">List</a></li>
             <li><a ng-show="isEditor() || isAdmin()" ui-sref="offices.create">Create</a></li>
           </ul>
         </li>
         <li class="dropdown" ui-sref-active="active" ng-show="isAuthenticated()">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
+          <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a ui-sref="user.update({ id: getId() })">User Profile</a></li>
             <li><a ng-show="isAdmin()" ui-sref="user.admin">Administer Users</a></li>
+            <li><a ng-show="isAdmin()" ui-sref="user.create">Create User</a></li>
           </ul>
         </li>
         </li>
