@@ -34,7 +34,11 @@
             toastr.success('Successfully created ' + self.name);
           })
           .catch(function (response) {
-            toastr.error(response.statusText, 'Could not create office.');
+            var details = [];
+            angular.forEach(response.data.invalidAttributes, function (invalid) {
+              this.push(invalid[0].message);
+            }, details);
+            toastr.error(details.join('. '), response.statusText);
           });
       };
 
@@ -45,7 +49,11 @@
             toastr.success('Successfully updated ' + self.name);
           })
           .catch(function (response) {
-            toastr.error(response.statusText, 'Could not update office.');
+            var details = [];
+            angular.forEach(response.data.invalidAttributes, function (invalid) {
+              this.push(invalid[0].message);
+            }, details);
+            toastr.error(details.join('. '), response.statusText);
           });
       };
 
@@ -56,7 +64,11 @@
             toastr.success('Successfully deleted ' + self.name);
           })
           .catch(function (response) {
-            toastr.error(response.statusText, 'Could not delete office.');
+            var details = [];
+            angular.forEach(response.data.invalidAttributes, function (invalid) {
+              this.push(invalid[0].message);
+            }, details);
+            toastr.error(details.join('. '), response.statusText);
           });
       };
 
