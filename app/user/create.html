@@ -16,16 +16,24 @@
         <input ng-model="user.organization" type="text" class="form-control" id="organization" placeholder="U.S. Fish and Wildlife Service" required>
       </div>
       <div class="form-group">
-        <label for="title">Job Title:</label>
-        <input ng-model="user.title" type="text" class="form-control" id="title" placeholder="Endangered Species Biologist" required>
+        <label for="job">Job:</label>
+        <input ng-model="user.job" type="text" class="form-control" id="job" placeholder="Endangered Species Biologist" required>
       </div>
       <div class="form-group">
-        <label for="email">E-mail Address:</label>
+        <label for="email">Email:</label>
         <input ng-model="user.email" type="text" class="form-control" id="email" placeholder="jane_doe@fws.gov" required>
       </div>
       <div class="form-group">
         <label for="phone">Phone:</label>
         <input ng-model="user.phone" type="text" class="form-control" id="phone" placeholder="(404) 679-7300" required>
+      </div>
+      <div class="form-group">
+        <label for="accountType">Account Type</label>
+        <select ng-model="user.accountType" class="form-control" id="accountType">
+          <option value="viewer">Viewer</option>
+          <option value="editor">Editor</option>
+          <option value="admin">Admin</option>
+        </select>
       </div>
       <button type="submit" class="btn btn-success btn-block">Create</button>
     </form>

@@ -11,6 +11,7 @@
     .factory('UserModel', ['$http', 'API_URL', 'toastr', function ($http, API_URL, toastr) {
       var UserModel = function(data) {
         this.id = data.id;
+        this.name = data.name;
         this.email = data.email;
         this.accountType = data.accountType;
         this.job = data.job;
@@ -32,6 +33,7 @@
               this.push(invalid[0].message);
             }, details);
             toastr.error(details.join('. '), response.statusText);
+            return response;
           });
       };
 
@@ -47,6 +49,7 @@
               this.push(invalid[0].message);
             }, details);
             toastr.error(details.join('. '), response.statusText);
+            return response;
           });
       };
 
@@ -62,6 +65,7 @@
               this.push(invalid[0].message);
             }, details);
             toastr.error(details.join('. '), response.statusText);
+            return response;
           });
       };
 

@@ -13,7 +13,15 @@
           {{ office.name }}, {{ office.phone }} <span ng-if="office.email">, <a href="mailto:{{ office.email }}?subject=At+Risk+Species+Finder+{{ species.scientificName }}">{{ office.email }}</a></span>
         </li>
       </ul>
-      <h3>Lead office: {{ species.leadOffice }}</h3>
+      <h3>Species Expert(s):</h3>
+      <ul>
+        <li ng-repeat="expert in species.experts">
+          <a ng-show="expert.email" href="mailto:{{ expert.email }}?subject=At+Risk+Species+Finder+{{ species.scientificName }}">{{ expert.name }}</a>
+          <span ng-hide="expert.email">{{ expert.name }}</span>
+          <span>&nbsp;{{ expert.organization }}, {{ expert.job }}</span>
+          <span ng-if="expert.phone">&nbsp;{{ expert.phone }}</span>
+        </li>
+      </ul>
       <h3>Status<span ng-if="species.status.length > 1">es</span>:</h3>
       <ul>
         <li ng-repeat="status in species.status">{{ status.date | date:shortDate }}: <a href="{{ status.url }}" target="_blank">{{ status.name }}</a></li>

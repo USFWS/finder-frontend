@@ -4,51 +4,27 @@
   </div>
   <div class="panel-body">
     <form ng-submit="updateSpecies(species)">
+
       <div class="form-group">
         <label for="scientificName">Scientific Name:</label>
         <input ng-model="species.scientificName" type="text" class="form-control" id="scientificName" placeholder="Ambystoma barbouri" required>
       </div>
+
       <div class="form-group">
         <label for="commonName">Common Name:</label>
         <input ng-model="species.commonName" type="text" class="form-control" id="commonName" placeholder="Streamside salamander">
       </div>
-      <!-- <div class="form-group">
-        <select class="form-control">
-          <option ng-repeat="office in offices" value="{{ office.name }}">{{ office.name +', ' + office.state }}</option>
-        </select>
-      </div> -->
+
       <div class="form-group">
         <label for="taxon">Taxonomic Group:</label>
         <select ng-options="str for str in taxonList" ng-model="species.taxon" class="form-control" required></select>
       </div>
 
-      <update-species-office-list offices="officeList" species="species"></update-species-office-list>
+      <p><span class="fa fa-info-circle"></span> Use the pick lists below to associate an expert or office with this species. To remove an office from the list use the red trashcan button. <strong>Be sure to submit this form by pressing the update button at the bottom to ensure your updates are saved to the database.</strong></p>
 
-      <div class="form-group">
-        <label for="leadOffice">OLD LEAD OFFICE:</label>
-        <select ng-model="species.leadOffice" class="form-control" id="leadOffice" required>
-          <option disabled selected> Select an Office </option>
-          <option value="Daphne">Daphne, AL</option>
-          <option value="Arkansas">Conway, AR</option>
-          <option value="Jacksonville">Jacksonville, FL</option>
-          <option value="Panama City">Panama City, FL</option>
-          <option value="SouthFlorida">Vero Beach, FL</option>
-          <option value="Athens">Athens, GA</option>
-          <option value="Kentucky">Frankfort, KY</option>
-          <option value="Lafayette">Lafayette, LA</option>
-          <option value="Jackson">Jackson, MS</option>
-          <option value="Asheville">Asheville, NC</option>
-          <option value="Raleigh">Raleigh, NC</option>
-          <option value="Charleston">Charleston, SC</option>
-          <option value="Cookeville">Cookeville, TN</option>
-          <option value="Caribbean">Boqueron, PR</option>
-          <option value="Region 2">Southwest Region</option>
-          <option value="Region 3">Midwest Region</option>
-          <option value="Region 4">Southeast Region</option>
-          <option value="Region 5">Northeast Region</option>
-          <option value="Region 6">Mountain-Prairie Region</option>
-        </select>
-      </div>
+      <species-office-list offices="officeList" species="species"></species-office-list>
+
+      <species-expert-list species="species" users="userList" ></species-expert-list>
 
       <species-status options="statusList" statuses="species.status"></species-status><br><br><br>
 

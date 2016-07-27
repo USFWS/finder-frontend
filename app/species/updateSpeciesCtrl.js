@@ -9,10 +9,11 @@
    * Controller of the frontendApp
    */
   angular.module('frontendApp')
-    .controller('UpdateSpeciesCtrl', ['$scope', 'theSpecies', 'User', 'Map', 'PickList', 'officeList', function ($scope, theSpecies, User, Map, PickList, officeList) {
+    .controller('UpdateSpeciesCtrl', ['$scope', 'theSpecies', 'User', 'Map', 'PickList', 'officeList', 'userList', function ($scope, theSpecies, User, Map, PickList, officeList, userList) {
         $scope.mapDefaults = { scrollWheelZoom: false };
         $scope.taxonList = PickList.TAXON_LIST;
         $scope.statusList = PickList.STATUS_LIST;
+        $scope.userList = userList;
         $scope.officeList = officeList;
         $scope.species = theSpecies;
         $scope.center = {
