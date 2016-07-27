@@ -19,6 +19,7 @@
           this.offices = data.offices || [];
           this.range = data.range || [];
           this.status = data.status || [{}];
+          this.experts = data.experts || [];
           this.updatedAt = data.updatedAt;
         };
 
@@ -77,6 +78,7 @@
             })
             .catch(function (response) {
               toastr.error(response.statusText, 'Could not associate ' + self.scientificName + ' with ' + office.name + '.');
+              return response;
             });
         };
 
@@ -89,6 +91,33 @@
             })
             .catch(function (response) {
               toastr.error(response.statusText, 'Could not remove associattion between ' + self.scientificName + ' and ' + office.name + '.');
+              return response;
+            });
+        };
+
+        SpeciesModel.prototype.associateExpert = function (expert) {
+          var self = this;
+          return $http.post(API_URL + 'species/' + self.id + '/experts/' + expert.id)
+            .then(function (response) {
+              toastr.success('Successfully associated ' + self.scientificName + ' with ' + expert.name + '.');
+              return new SpeciesModel(response.data);
+            })
+            .catch(function (response) {
+              toastr.error(response.statusText, 'Could not associate ' + self.scientificName + ' with ' + expert.name + '.');
+              return response;
+            });
+        };
+
+        SpeciesModel.prototype.removeAssociatedExpert = function (expert) {
+          var self = this;
+          return $http.delete(API_URL + 'species/' + self.id + '/experts/' + expert.id)
+            .then(function (response) {
+              toastr.success('Successfully removed association between ' + self.scientificName + ' and ' + expert.name + '.');
+              return new SpeciesModel(response.data);
+            })
+            .catch(function (response) {
+              toastr.error(response.statusText, 'Could not remove associattion between ' + self.scientificName + ' and ' + expert.name + '.');
+              return response;
             });
         };
 
