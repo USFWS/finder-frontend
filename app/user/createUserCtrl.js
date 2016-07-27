@@ -11,8 +11,7 @@
   angular.module('frontendApp')
     .controller('CreateUserCtrl', ['$scope', 'UserModel', function ($scope, UserModel) {
       $scope.user = new UserModel({});
-      console.log($scope.user);
-      delete $scope.user.accountType;
+      $scope.user.accountType = 'viewer';
 
       $scope.create = function(user) {
         if ( user.validate() ) {
