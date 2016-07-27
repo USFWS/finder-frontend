@@ -5,21 +5,29 @@
   <div class="panel-body">
     <form ng-submit="update(user)">
       <div class="form-group">
-        <label for="email">Email address</label>
-        <input ng-model="user.email" type="email" class="form-control" id="email" placeholder="Email">
+        <label for="name">Name:</label>
+        <input ng-model="user.name" type="name" class="form-control" id="name" placeholder="John Doe">
       </div>
       <div class="form-group">
-        <label for="job">Job</label>
+        <label for="organization">Organization:</label>
+        <input ng-model="user.organization" type="text" class="form-control" id="organization" placeholder="U.S. Fish and Wildlife Service">
+      </div>
+      <div class="form-group">
+        <label for="job">Job:</label>
         <input ng-model="user.job" type="text" class="form-control" id="job" placeholder="Endangered Species Biologist">
       </div>
       <div class="form-group">
-        <label for="phone">Phone</label>
-        <input ng-model="user.phone" type="text" class="form-control" id="phone" placeholder="(404) 679-7000">
+        <label for="email">Email:</label>
+        <input ng-model="user.email" type="email" class="form-control" id="email" placeholder="john_doe@fws.gov">
       </div>
       <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input ng-model="user.phone" type="text" class="form-control" id="phone" placeholder="(404) 679-7000">
+      </div>
+      <!-- Should only be displayed if the logged in user is an Admin -->
+      <div class="form-group">
         <label for="accountType">Account Type</label>
-        <!-- Should be disabled if you're not an admin -->
-        <select ng-model="user.accountType" ng-disabled="!isAdmin()" class="form-control" id="accountType">
+        <select ng-model="user.accountType" class="form-control" id="accountType">
           <option value="admin">Admin</option>
           <option value="editor">Editor</option>
           <option value="viewer">Viewer</option>
