@@ -4,7 +4,8 @@
 <table class="table" ng-init="getUsers()">
   <thead>
     <tr>
-      <th>Username</th>
+      <th>Name</th>
+      <th>Email</th>
       <th>Job</th>
       <th>Phone</th>
       <th>Account Type</th>
@@ -13,6 +14,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="user in users">
+      <td>{{ user.name }}</td>
       <td>{{ user.email }}</td>
       <td>{{ user.job }}</td>
       <td>{{ user.phone }}</td>
