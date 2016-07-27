@@ -29,6 +29,7 @@
           })
           .catch(function (response) {
             toastr.error(response.statusText, 'Could not download user list.');
+            return response;
           });
       }
 
@@ -39,6 +40,7 @@
           })
           .catch(function (response) {
             toastr.error(response.statusText, 'Could not download user.');
+            return response;
           });
       }
 
@@ -46,6 +48,7 @@
         return $http.delete(API_URL + 'user/' + id)
           .catch(function (response) {
             toastr.error(response.statusText, 'Could not delete user.');
+            return response;
           });
       }
 
@@ -53,6 +56,7 @@
         return $http.post(API_URL + 'user/' + id, user)
           .catch(function (response) {
             toastr.error(response.statusText, 'Could not update user list.');
+            return response;
           });
       }
 
