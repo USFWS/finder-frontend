@@ -14,10 +14,12 @@
       </div>
       <div class="form-group">
         <label for="taxon">Taxonomic Group:</label>
-        <select ng-options="str for str in taxonList" ng-model="species.taxon" class="form-control" required></select>
+        <select ng-options="str for str in taxonList" ng-model="species.taxon" class="form-control" id="taxon" required></select>
       </div>
 
-      <create-species-office-list offices="officeList" species="species"></create-species-office-list>
+      <species-office-list offices="officeList" species="species"></species-office-list>
+
+      <species-expert-list species="species" users="userList" ></species-expert-list>
 
       <species-status statuses="species.status" options="statusList"></species-status>
 

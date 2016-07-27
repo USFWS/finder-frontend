@@ -2,10 +2,10 @@
   'use strict';
 
   angular.module('frontendApp')
-    .directive('createSpeciesOfficeList', function () {
+    .directive('speciesOfficeList', function () {
       return {
         restrict: 'E',
-        templateUrl: './species/createSpeciesOfficeList.html',
+        templateUrl: './species/speciesOfficeList.html',
         scope: {
           species: '=',
           offices: '='
