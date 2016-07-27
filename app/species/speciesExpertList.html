@@ -1,0 +1,14 @@
+<div class="form-group">
+
+  <label for="expert">Species Expert(s):</label>
+
+  <select ng-options="expert.name for expert in users" ng-model="newExpert" ng-change="addExpert(species, newExpert)" class="form-control" id="expert" required></select>
+
+  <ul class="list-group" style="margin-top: 1em;">
+    <li ng-repeat="expert in species.experts" class="list-group-item clearfix">
+      {{ expert.name }}, {{ expert.phone }} <span ng-if="expert.email">, <a href="mailto:{{ expert.email }}?subject=At+Risk+Species+Finder+{{ species.scientificName }}">{{ expert.email }}</a></span>
+      <button class="btn btn-danger pull-right" type="button" ng-click="removeExpert(species, expert)"><span class="fa fa-trash"></span> Remove</button>
+    </li>
+  </ul>
+
+</div>

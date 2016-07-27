@@ -55,6 +55,9 @@
           resolve: {
             officeList: function(Office) {
               return Office.getOffices();
+            },
+            userList: function(User) {
+              return User.getUsers();
             }
           }
         })
@@ -69,6 +72,9 @@
             },
             officeList: function(Office) {
               return Office.getOffices();
+            },
+            userList: function(User) {
+              return User.getUsers();
             }
           }
         })
@@ -222,7 +228,8 @@
       $authProvider.registerUrl = API_URL + 'auth/register';
       $authProvider.google({
         url: API_URL + 'auth/google',
-        redirectUri: 'https://www.fws.gov/southeast/candidateconservation/finder2/',
+        // redirectUri: 'https://www.fws.gov/southeast/candidateconservation/finder2/',
+        redirectUrl: 'http://localhost:9000/',
         clientId: '302206927623-uvp8uhlid7kj6a7hcpsa3rugipluouc9.apps.googleusercontent.com'
       });
 

@@ -1,7 +1,6 @@
 <div class="form-group">
 
   <label for="office">Associated Office(s):</label>
-  <p><span class="fa fa-info-circle"></span> Use the pick list below to associate an office with this species, which will be automatically added to the list. To remove an office from the list use the red trashcan button.</p>
 
   <select ng-options="office.name for office in offices" ng-model="newOffice" ng-change="addOffice(species, newOffice)" class="form-control" id="office" required></select>
 
