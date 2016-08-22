@@ -83,12 +83,10 @@
 
     var STATUS_LIST = [
       'Candidate',
-      'Candidate Removal',
       'Petitioned',
       'Petition Withdrawn',
       'Substantial 90-day Finding',
       'Not Substantial 90-day Finding',
-      'Warranted 12-month Finding',
       'Not Warranted 12-month Finding',
       'Proposed for Listing as Threatened',
       'Final Listing as Threatened',
