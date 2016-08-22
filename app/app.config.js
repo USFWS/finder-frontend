@@ -1,7 +1,7 @@
 (function () {
   'use strict';
-  var API_URL = 'http://localhost:1337/';
-  // var API_URL = 'https://finder.royhewitt.com/';
+  // var API_URL = 'http://localhost:1337/';
+  var API_URL = 'https://finder.royhewitt.com/';
 
   angular.module('frontendApp')
     .constant('API_URL', API_URL)
