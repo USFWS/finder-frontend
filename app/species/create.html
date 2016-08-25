@@ -4,18 +4,23 @@
   </div>
   <div class="panel-body">
     <form ng-submit="create(species)">
+
       <div class="form-group">
         <label for="scientificName">Scientific Name:</label>
         <input ng-model="species.scientificName" type="text" class="form-control" id="scientificName" placeholder="Ambystoma barbouri" required>
       </div>
+
       <div class="form-group">
         <label for="commonName">Common Name:</label>
         <input ng-model="species.commonName" type="text" class="form-control" id="commonName" placeholder="Streamside salamander">
       </div>
+
       <div class="form-group">
         <label for="taxon">Taxonomic Group:</label>
         <select ng-options="str for str in taxonList" ng-model="species.taxon" class="form-control" id="taxon" required></select>
       </div>
+
+      <species-categorization-list categories="categories", species="species"></species-categorization-list>
 
       <species-office-list offices="officeList" species="species"></species-office-list>
 
@@ -27,6 +32,7 @@
         <label>Species Range:</label>
         <leaflet geojson="geojson" center="center" defaults="mapDefaults" style="height: 300px;"></leaflet>
       </div>
+
       <button type="submit" class="btn btn-success btn-block">Create</button>
     </form>
   </div>
