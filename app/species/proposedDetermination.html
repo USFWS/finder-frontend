@@ -1,0 +1,12 @@
+<div class="form-group">
+  <label for="proposedDetermination"> Proposed Determination Date:</label>&nbsp;&nbsp;&nbsp;
+
+  <label for="fuzzyDate">Fuzzy Date: <input ng-change="radioChanged()" ng-model="determinationType" value="1" type="radio" id="fuzzyDate"/></label>&nbsp;&nbsp;&nbsp;
+  <label for="exactDate">Exact Date: <input ng-change="radioChanged()" ng-model="determinationType" value="2" type="radio" id="exactDate"/></label>
+
+  <input ng-show="determinationType == 1" ng-model="species.proposedDetermination" type="text" class="form-control" id="proposedDetermination" placeholder="FY18 or TBD">
+
+  <datepicker ng-show="determinationType == 2" class="status-date" date-format="yyyy-MM-dd">
+    <input type="text" class="form-control"  ng-model="species.proposedDetermination" placeholder="Date">
+  </datepicker>
+</div>
