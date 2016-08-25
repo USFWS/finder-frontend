@@ -1,0 +1,21 @@
+<div class="form-group">
+
+  <label for="categorization">Species Categorization:</label>
+
+  <select
+    ng-options="category.name for category in categories"
+    ng-model="newCategory"
+    ng-change="addCategory(species, newCategory)"
+    class="form-control"
+    id="categorization"
+    required>
+  </select>
+
+  <ul class="list-group" style="margin-top: 1em;">
+    <li ng-repeat="category in species.categorization" class="list-group-item clearfix">
+      ({{ category.code }}) {{ category.name }}:  {{ category.description }}
+      <button class="btn btn-danger pull-right" type="button" ng-click="removeCategory(species, category)"><span class="fa fa-trash"></span> Remove</button>
+    </li>
+  </ul>
+
+</div>
