@@ -1,0 +1,37 @@
+<p class="text-container hidden-print">Enter a search term in the text box below to filter the list of categories.  Click the 'More info' button to see all available information for an office including a list of associated species.</p>
+
+<div class="text-center">
+  <div class="form-group hidden-print">
+    <label class="sr-only">Query Categories</label>
+    <div class="input-group">
+      <div class="input-group-addon"><span class="fa fa-search"></span></div>
+      <input type="search" class="form-control" ng-model="query" placeholder="Enter term to filter categories" ng-model-options="{ debounce: 1000 }">
+    </div>
+  </div>
+</div>
+
+<p class="hidden-print text-center"><strong>Click on column header to sort the list!</strong></p>
+<table ts-wrapper class="table table-striped">
+  <thead>
+    <tr>
+      <th ts-criteria="name" ts-default>Name</th>
+      <th ts-criteria="code">Code</th>
+      <th ts-criteria="description">Description</th>
+      <th ng-if="isAdmin()" class="hidden-print">Edit</th>
+      <th ng-if="isAdmin()" class="hidden-print">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="category in categories | filter:query" ts-repeat>
+      <td>{{ category.name }}</td>
+      <td>{{ category.code }}</td>
+      <td>{{ category.description }}</td>
+      <td ng-if="isAdmin()" class="hidden-print">
+        <button ui-sref="categories.update({ id: category.id })" class="btn btn-sm btn-success"><span class="fa fa-edit"></span></button>
+      </td>
+      <td ng-if="isAdmin()" class="hidden-print">
+        <button ng-click="remove(category)" class="btn btn-sm btn-danger"><span class="fa fa-trash"></span></button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,26 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2 class="panel-title">Add a species Categorization to the Database</h2>
+  </div>
+  <div class="panel-body">
+    <form ng-submit="create(category)">
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input ng-model="category.name" type="text" class="form-control" id="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="code">Code</label>
+        <input ng-model="category.code" type="text" class="form-control" id="code" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea ng-model="category.description" type="text" class="form-control" id="description" required></textarea>
+      </div>
+
+      <button class="btn btn-success btn-block" type="submit">Create</button>
+    </form>
+  </div>
+</div>
