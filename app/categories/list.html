@@ -14,8 +14,8 @@
 <table ts-wrapper class="table table-striped">
   <thead>
     <tr>
-      <th ts-criteria="name" ts-default>Name</th>
-      <th ts-criteria="code">Code</th>
+      <th ts-criteria="code" ts-default>Code</th>
+      <th ts-criteria="name">Name</th>
       <th ts-criteria="description">Description</th>
       <th ng-if="isAdmin()" class="hidden-print">Edit</th>
       <th ng-if="isAdmin()" class="hidden-print">Delete</th>
@@ -23,8 +23,8 @@
   </thead>
   <tbody>
     <tr ng-repeat="category in categories | filter:query" ts-repeat>
-      <td>{{ category.name }}</td>
       <td>{{ category.code }}</td>
+      <td>{{ category.name }}</td>
       <td>{{ category.description }}</td>
       <td ng-if="isAdmin()" class="hidden-print">
         <button ui-sref="categories.update({ id: category.id })" class="btn btn-sm btn-success"><span class="fa fa-edit"></span></button>
