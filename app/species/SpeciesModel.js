@@ -169,6 +169,14 @@
           return mostRecent;
         };
 
+        SpeciesModel.prototype.lastCategoryAsText = function () {
+          var text = '';
+          var category = this.categorization[this.categorization.length -1];
+          if ( category === undefined ) return text;
+          else text = [category.code, category.name].join(' - ');
+          return text;
+        };
+
         SpeciesModel.prototype.addCategory = function (category) {
           this.categorization.push(category);
           return this.categorization;
