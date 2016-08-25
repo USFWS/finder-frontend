@@ -25,6 +25,7 @@
     <tr>
       <th ts-criteria="scientificName">Scientific Name</th>
       <th ts-criteria="commonName">Common Name</th>
+      <th>Category</th>
       <th ts-criteria="status">Status</th>
       <th ts-criteria="taxon" ts-default>Taxon</th>
       <th ts-criteria="leadOffice">Lead Office</th>
@@ -39,6 +40,7 @@
     <tr ng-repeat="animal in species | filter:query" ts-repeat>
       <td><em>{{ animal.scientificName }}</em></td>
       <td>{{ animal.commonName }}</td>
+      <td>{{ animal.lastCategoryAsText() }}</td>
       <td>{{ animal.currentStatus() }}</td>
       <td>{{ animal.taxon }}</td>
       <td>{{ animal.getLeadOfficeName() }}</td>
