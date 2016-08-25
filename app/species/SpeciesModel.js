@@ -19,6 +19,8 @@
           this.offices = data.offices || [];
           this.range = data.range || [];
           this.status = data.status || [{}];
+          this.categorization = data.categorization || [];
+          this.proposedDetermination = data.proposedDetermination;
           this.experts = data.experts || [];
           this.updatedAt = data.updatedAt;
         };
@@ -143,9 +145,7 @@
 
         SpeciesModel.prototype.getLeadOfficeId = function () {
           if ( this.office.length === 1 ) return this.office[0].id;
-          else {
-            return this.mostRecentOffice().id;
-          }
+          else return this.mostRecentOffice().id;
         };
 
         SpeciesModel.prototype.getLeadOfficeName = function () {
@@ -167,6 +167,17 @@
               mostRecent = office;
           });
           return mostRecent;
+        };
+
+        SpeciesModel.prototype.addCategory = function (category) {
+          this.categorization.push(category);
+          return this.categorization;
+        };
+
+        SpeciesModel.prototype.removeCategory = function (category) {
+          var index = this.categorization.indexOf(category);
+          if (index > -1 ) this.categorization.splice(index, 1);
+          return this.categorization;
         };
 
         SpeciesModel.prototype.validate = function () {
