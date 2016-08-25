@@ -6,13 +6,23 @@
     <div class="species-card">
       <button class="btn btn-sm btn-success pull-right" ui-sref="species.update({ id: species.id })" style="margin-left:1em;"><span class="fa fa-edit"></span> Edit</button>
       <button class="btn btn-sm btn-danger pull-right" ng-click="destroy(species)"><span class="fa fa-trash"></span>  Delete</button>
+
       <h3>Taxon: {{ species.taxon }}</h3>
+
+      <h3>Categorization:</h3>
+      <ul>
+        <li ng-repeat="category in species.categorization">
+          <strong>({{ category.code }}) {{ category.name }}:</strong> {{ category.description }}
+        </li>
+      </ul>
+
       <h3>Associated Office(s):</h3>
       <ul>
         <li ng-repeat="office in species.offices">
           {{ office.name }}, {{ office.phone }} <span ng-if="office.email">, <a href="mailto:{{ office.email }}?subject=At+Risk+Species+Finder+{{ species.scientificName }}">{{ office.email }}</a></span>
         </li>
       </ul>
+
       <h3>Species Expert(s):</h3>
       <ul>
         <li ng-repeat="expert in species.experts">
@@ -22,10 +32,12 @@
           <span ng-if="expert.phone">&nbsp;{{ expert.phone }}</span>
         </li>
       </ul>
+
       <h3>Status<span ng-if="species.status.length > 1">es</span>:</h3>
       <ul>
         <li ng-repeat="status in species.status">{{ status.date | date:shortDate }}: <a href="{{ status.url }}" target="_blank">{{ status.name }}</a></li>
       </ul>
+
     </div>
     <leaflet geojson="geojson" center="center" defaults="mapDefaults" style="height: 300px;"></leaflet>
   </div>
