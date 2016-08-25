@@ -50,6 +50,12 @@
             <li><a ng-show="isAdmin()" ui-sref="user.create">Create User</a></li>
           </ul>
         </li>
+        <li class="dropdown" ui-sref-active="active" ng-show="isAdmin()">
+          <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorization <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a ng-show="isAdmin()" ui-sref="categories.list">Category List</a></li>
+            <li><a ng-show="isAdmin()" ui-sref="categories.create">Create Category</a></li>
+          </ul>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
