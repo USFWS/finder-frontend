@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  
+
   var API_URL = 'https://finder.royhewitt.com/';
   var REDIRECT_URL = 'https://www.fws.gov/southeast/candidateconservation/finder2/';
   // var API_URL = 'http://localhost:1337/';
