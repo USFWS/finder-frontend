@@ -1,7 +1,10 @@
 (function () {
   'use strict';
-  // var API_URL = 'http://localhost:1337/';
+  
   var API_URL = 'https://finder.royhewitt.com/';
+  var REDIRECT_URL = 'https://www.fws.gov/southeast/candidateconservation/finder2/';
+  // var API_URL = 'http://localhost:1337/';
+  // var REDIRECT_URL = 'http://localhost:9090/'
 
   angular.module('frontendApp')
     .constant('API_URL', API_URL)
@@ -58,6 +61,9 @@
             },
             userList: function(User) {
               return User.getUsers();
+            },
+            categoryList: function(Category) {
+              return Category.getCategories();
             }
           }
         })
@@ -75,6 +81,9 @@
             },
             userList: function(User) {
               return User.getUsers();
+            },
+            categoryList: function(Category) {
+              return Category.getCategories();
             }
           }
         })
@@ -222,14 +231,51 @@
               return Office.getOffices();
             }
           }
+        })
+
+        .state('categories', {
+          url: '/categories',
+          templateUrl: 'categories/main.html'
+        })
+
+        .state('categories.list', {
+          url: '/list',
+          templateUrl: 'categories/list.html',
+          controller: 'CategoryListCtrl',
+          resolve: {
+            categoryList: function(Category) {
+              return Category.getCategories();
+            }
+          }
+        })
+
+        .state('categories.create', {
+          url: '/create',
+          templateUrl: 'categories/create.html',
+          controller: 'CategoriesCtrl',
+          resolve: {
+            category: function() {
+              return null;
+            }
+          }
+        })
+
+        .state('categories.update', {
+          url: '/update/:id',
+          templateUrl: 'categories/update.html',
+          controller: 'CategoriesCtrl',
+          resolve: {
+            category: function(Category, $stateParams) {
+              return Category.getCategory($stateParams.id);
+            }
+          }
         });
 
       $authProvider.loginUrl = API_URL + 'auth/login';
       $authProvider.registerUrl = API_URL + 'auth/register';
       $authProvider.google({
         url: API_URL + 'auth/google',
-        // redirectUri: 'https://www.fws.gov/southeast/candidateconservation/finder2/',
-        redirectUrl: 'http://localhost:9000/',
+        redirectUri: REDIRECT_URL,
         clientId: '302206927623-uvp8uhlid7kj6a7hcpsa3rugipluouc9.apps.googleusercontent.com'
       });
 
