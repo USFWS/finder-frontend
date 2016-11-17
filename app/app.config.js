@@ -19,7 +19,7 @@
           controller: 'HomeCtrl',
           resolve: {
             SpeciesList: function (Species) {
-              return Species.getSpecies();
+              return Species.getSpecies({ populate: false });
             }
           }
         })
@@ -35,7 +35,7 @@
           controller: 'SpeciesListCtrl',
           resolve: {
             SpeciesList: function(Species) {
-              return Species.getSpecies();
+              return Species.getSpecies({ populate: false });
             }
           }
         })
@@ -46,7 +46,7 @@
           controller: 'SpeciesListCtrl',
           resolve: {
             SpeciesList: function(Species) {
-              return Species.getSpecies();
+              return Species.getSpecies({ populate: ['categorization']});
             }
           }
         })
