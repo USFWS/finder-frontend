@@ -11,9 +11,11 @@
   angular.module('frontendApp')
     .service('Species', ['$http', 'API_URL', 'toastr', 'SpeciesModel', function ($http, API_URL, toastr, SpeciesModel) {
 
-      function getSpecies() {
-        return $http.get(API_URL + 'species?sort=range+ASC')
+      function getSpecies(query) {
+        query = { params: query } || {}
+        return $http.get(API_URL + 'species', query)
           .then(function (response) {
+            console.log(response.data);
             var species = [];
             angular.forEach(response.data, function (animal) {
               species.push( new SpeciesModel(animal) );
