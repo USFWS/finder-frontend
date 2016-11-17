@@ -19,6 +19,8 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <!-- We participate in the US government's analytics program. See the data at analytics.usa.gov. -->
+    <script async type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOI&subagency=FWS" id="_fed_an_ua_tag"></script>
   </head>
   <body ng-app="frontendApp">
     <!--[if lt IE 7]>
@@ -41,7 +43,7 @@
        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
        }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-XXXXX-X');
+       ga('create', 'UA-21323598-1');
        ga('send', 'pageview');
     </script>
 
@@ -110,5 +112,6 @@
         <script src="header/headerCtrl.js"></script>
         <script src="map/map.js"></script>
         <!-- endbuild -->
+
 </body>
 </html>
