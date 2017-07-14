@@ -2,7 +2,7 @@
   'use strict';
 
   var API_URL = 'https://finder.royhewitt.com/';
-  var REDIRECT_URL = 'https://www.fws.gov/southeast/candidateconservation/finder2/';
+  var REDIRECT_URL = 'https://www.fws.gov/southeast/finder/';
   // var API_URL = 'http://localhost:1337/';
   // var REDIRECT_URL = 'http://localhost:9090/'
 
@@ -95,6 +95,25 @@
           resolve: {
             theSpecies: function(Species, $stateParams) {
               return Species.getOne($stateParams.id);
+            },
+            associatedLands: function($http, $stateParams) {
+              var query = {
+                "params": {
+                  "where": {"species": $stateParams.id}
+                }
+              };
+              return $http.get(API_URL + 'specieslands', query)
+                .then(function(res) {
+                  return res.data.map(function(association) {
+                    return {
+                      id: association.id,
+                      name: association.land.name,
+                      agency: association.land.agency,
+                      label: association.land.label,
+                      population: association.population
+                    }
+                  });
+                });
             }
           }
         })
@@ -267,6 +286,20 @@
           resolve: {
             category: function(Category, $stateParams) {
               return Category.getCategory($stateParams.id);
+            }
+          }
+        })
+
+        .state('lands', {
+          url: '/lands',
+          templateUrl: 'lands/lands.html',
+          controller: 'LandsCtrl',
+          resolve: {
+            landsList: function(Lands) {
+              return Lands.getLands();
+            },
+            speciesList: function(Species) {
+              return Species.getSpecies();
             }
           }
         });

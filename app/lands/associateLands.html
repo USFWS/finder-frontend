@@ -1,0 +1,70 @@
+<h1>Link Species with Protected Lands</h1>
+
+<form ng-submit="createAssociation()">
+  <div class="form-group">
+
+    <p>To create a relationship between a species and a protected land both must already exist in the database.</p>
+
+    <h2>Population Code Key</h2>
+    <ul>
+      <li ng-repeat="code in codes"><strong>{{ code.value }}:</strong> {{ code.description }}</li>
+    </ul>
+
+    <div class='form-group'>
+      <label for='species'>Species</label>
+      <select
+        required
+        ng-model="linkSpecies"
+        ng-options="animal.fullName() for animal in species"
+        ng-change="updateSpecies(linkSpecies.id)"
+        class="form-control"
+        id="species"
+      >
+      </select>
+    </div>
+
+    <div class='form-group'>
+      <label for="land">Protected Land</label>
+      <select
+        required
+        ng-options="land.name for land in lands"
+        ng-model="newLand"
+        ng-change="updateLand(newLand.id)"
+        class="form-control"
+        id="land" >
+      </select>
+    </div>
+
+    <div class='form-group'>
+      <label for="code">Population Code</label>
+      <select
+        required
+        ng-options="code.value for code in codes"
+        ng-model="populationCode"
+        ng-change="updatePopulationCode(populationCode.value)"
+        class="form-control"
+        id="code" >
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Create Association</button>
+  </div>
+</form>
+
+
+<!-- We need to add a population code to each land association: code.value for code in codes -->
+<div ng-show="linkSpecies.commonName">
+  <h2>Lands associated with {{ linkSpecies.commonName }}</h2>
+  <ul class="list-group" style="margin-top: 1em;">
+    <li ng-if="!associatedLands.length" class="list-group-item">
+      <p><strong>No lands have been linked with {{ linkSpecies.commonName }} yet.</strong></p>
+    </li>
+    <li ng-repeat="association in associatedLands" class="list-group-item clearfix">
+      <button class='btn btn-danger pull-right' ng-click="removeAssociation(association)"><span class='fa fa-trash'></span> Remove</button>
+      <p><strong>Protected Land:</strong> {{ association.label ? association.label : association.name }}</p>
+      <p><strong>Agency:</strong> {{ association.agency }}</p>
+      <p><strong>Population Code:</strong> {{ association.population }}</p>
+      <!-- We need to add a button so you can remove an association -->
+    </li>
+  </ul>
+</div>

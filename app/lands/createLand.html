@@ -1,0 +1,47 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h2 class="panel-title">Add a Protected Land to the Database</h2>
+  </div>
+  <div class="panel-body">
+    <form ng-submit="createLand(land)">
+
+      <div class="form-group">
+        <label for=''>Protected Areas (USGS, PAD-US)</label>
+        <select
+          ng-options="l as (l.agency + ': ' + l.name) for l in lands"
+          ng-model="newLand"
+          ng-change="updateModel(newLand)"
+          class="form-control"
+          id="newLand" >
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for=''>Managing Agency</label>
+        <input type="text" class="form-control" ng-model="land.agency" placeholder="Protected land managing agency...">
+      </div>
+
+      <div class="form-group">
+        <label for=''>Protected Land Name</label>
+        <input type="text" class="form-control" ng-model="land.name" placeholder="Official name from the PAD-US database...">
+      </div>
+
+      <div class="form-group">
+        <label for=''>Label (optional, used when the PAD-US name is not very descriptive)</label>
+        <input type="text" class="form-control" ng-model="land.label" placeholder="A more descriptive name...">
+      </div>
+
+      <div class="form-group">
+        <label for=''>Notes (optional)</label>
+        <textarea class="form-control" ng-model="land.notes" placeholder="Custom space for notes on this protected area..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for=''>Custom (check if you manually entered the land rather than selecting from the pick list above)</label>
+        <input type="checkbox" class="form-control" ng-model="land.custom">
+      </div>
+
+      <button type="submit" class="btn btn-success btn-block">Add Protected Land to Database</button>
+    </form>
+  </div>
+</div>
