@@ -9,39 +9,60 @@
 
       <h3>Taxon: {{ species.taxon }}</h3>
 
-      <h3>Categorization:</h3>
-      <ul>
-        <li ng-repeat="category in species.categorization">
-          <strong>({{ category.code }}) {{ category.name }}:</strong> {{ category.description }}
-        </li>
-      </ul>
+      <div ng-if="species.categorization.length">
+        <h3>Categorization:</h3>
+        <ul>
+          <li ng-repeat="category in species.categorization">
+            <strong>({{ category.code }}) {{ category.name }}:</strong> {{ category.description }}
+          </li>
+        </ul>
+      </div>
 
-      <h3>Proposed Determination Date:</h3>
-      <ul>
-        <li>{{ species.proposedDetermination }}</li>
-      </ul>
 
-      <h3>Associated Office(s):</h3>
-      <ul>
-        <li ng-repeat="office in species.offices">
-          {{ office.name }}, {{ office.phone }} <span ng-if="office.email">, <a href="mailto:{{ office.email }}?subject=At+Risk+Species+Finder+{{ species.scientificName }}">{{ office.email }}</a></span>
-        </li>
-      </ul>
+      <div ng-if="species.proposedDetermination">
+        <h3>Proposed Determination Date:</h3>
+        <ul>
+          <li>{{ species.proposedDetermination }}</li>
+        </ul>
+      </div>
 
-      <h3>Species Expert(s):</h3>
-      <ul>
-        <li ng-repeat="expert in species.experts">
-          <a ng-show="expert.email" href="mailto:{{ expert.email }}?subject=At+Risk+Species+Finder+{{ species.scientificName }}">{{ expert.name }}</a>
-          <span ng-hide="expert.email">{{ expert.name }}</span>
-          <span>&nbsp;{{ expert.organization }}, {{ expert.job }}</span>
-          <span ng-if="expert.phone">&nbsp;{{ expert.phone }}</span>
-        </li>
-      </ul>
+      <div ng-if="species.offices.length">
+        <h3>Associated Office(s):</h3>
+        <ul>
+          <li ng-repeat="office in species.offices">
+            {{ office.name }}, {{ office.phone }} <span ng-if="office.email">, <a href="mailto:{{ office.email }}?subject=At+Risk+Species+Finder+{{ species.scientificName }}">{{ office.email }}</a></span>
+          </li>
+        </ul>
+      </div>
+
+      <div ng-if="species.experts.length">
+        <h3>Species Expert(s):</h3>
+        <ul>
+          <li ng-repeat="expert in species.experts">
+            <a ng-show="expert.email" href="mailto:{{ expert.email }}?subject=At+Risk+Species+Finder+{{ species.scientificName }}">{{ expert.name }}</a>
+            <span ng-hide="expert.email">{{ expert.name }}</span>
+            <span>&nbsp;{{ expert.organization }}, {{ expert.job }}</span>
+            <span ng-if="expert.phone">&nbsp;{{ expert.phone }}</span>
+          </li>
+        </ul>
+      </div>
 
       <h3>Status<span ng-if="species.status.length > 1">es</span>:</h3>
       <ul>
         <li ng-repeat="status in species.status">{{ status.date | date:shortDate }}: <a href="{{ status.url }}" target="_blank">{{ status.name }}</a></li>
       </ul>
+
+      <div ng-if="associatedLands.length">
+        <h3>Associated Public Lands:</h3>
+        <ul class="list-group" style="margin-top: 1em;">
+          <li ng-repeat="association in associatedLands" class="list-group-item clearfix">
+            <p><strong>Protected Land:</strong> {{ association.label ? association.label : association.name }}</p>
+            <p><strong>Agency:</strong> {{ association.agency }}</p>
+            <p><strong>Population Code:</strong> {{ association.population }}</p>
+            <!-- We need to add a button so you can remove an association -->
+          </li>
+        </ul>
+      </div>
 
     </div>
     <leaflet geojson="geojson" center="center" defaults="mapDefaults" style="height: 300px;"></leaflet>

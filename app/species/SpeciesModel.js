@@ -22,6 +22,7 @@
           this.categorization = data.categorization || [];
           this.proposedDetermination = data.proposedDetermination;
           this.experts = data.experts || [];
+          this.lands = data.lands || [];
           this.updatedAt = data.updatedAt;
         };
 
@@ -121,6 +122,10 @@
               toastr.error(response.statusText, 'Could not remove associattion between ' + self.scientificName + ' and ' + expert.name + '.');
               return response;
             });
+        };
+
+        SpeciesModel.prototype.fullName = function () {
+          return this.commonName + ' (' + this.scientificName + ')';
         };
 
         SpeciesModel.prototype.currentStatus = function () {
