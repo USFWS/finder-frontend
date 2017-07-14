@@ -97,7 +97,9 @@
       'Proposed for Listing as Endangered due to Similarity of Appearance',
       'Final Listing as Endangered due to Similarity of Appearance',
       'Lawsuit to Challenge Not Substantial 90-day Finding',
-      'Lawsuit to Challenge Not Warranted 12-month Finding'
+      'Lawsuit to Challenge Not Warranted 12-month Finding',
+      'Discretionary Status Review',
+      'No Longer Considered a Listable Entity'
     ];
 
     var DOES_NOT_NEED_PROTECTION = [
@@ -137,6 +139,25 @@
         'National'
       ];
 
+    var POPULATION_CODES = [
+      {
+        value: 'O+',
+        description: 'A significant population occurs on the Refuge.'
+      },
+      {
+        value: 'O',
+        description: 'The species and its habitats occur on the Refuge.'
+      },
+      {
+        value: 'P',
+        description: 'The species possibly occurs on the Refuge.'
+      },
+      {
+        value: 'U',
+        description: 'Habitat is apparently present and the area is within the species\' range.'
+      },
+    ]
+
     return {
       TAXON_LIST: TAXON_LIST.sort(),
       STATUS_LIST: STATUS_LIST.sort(),
@@ -144,7 +165,8 @@
       STATE_LIST: STATE_LIST.sort(),
       PROTECTED: PROTECTED.sort(),
       DOES_NOT_NEED_PROTECTION: DOES_NOT_NEED_PROTECTION.sort(),
-      FINISHED: FINISHED.sort()
+      FINISHED: FINISHED.sort(),
+      POPULATION_CODES: POPULATION_CODES
     };
 
   });
