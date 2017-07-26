@@ -45,7 +45,6 @@
           delete this.leadOffice;
           return $http.put(API_URL + 'species/' + this.id, this)
             .then(function (response) {
-              console.log(response.data);
               toastr.success('Successfully updated ' + response.data.scientificName + '.');
             })
             .catch(function (response) {

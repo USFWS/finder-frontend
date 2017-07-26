@@ -16,7 +16,6 @@
       $scope.create = function(user) {
         if ( user.validate() ) {
           user.create().then(function (response) {
-            console.log(response);
             if (response.status === 201) {
               $scope.user = new UserModel({});
             }
