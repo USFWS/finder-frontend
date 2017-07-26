@@ -9,10 +9,11 @@
    * Controller of the frontendApp
    */
   angular.module('frontendApp')
-    .controller('QueryCtrl', ['$scope', '$httpParamSerializerJQLike', 'Map', 'Query', 'PickList', 'officeList', function ($scope, $httpParamSerializerJQLike, Map, Query, PickList, officeList) {
+    .controller('QueryCtrl', ['$scope', '$httpParamSerializerJQLike', 'Map', 'Query', 'PickList', 'landsList', 'officeList', function ($scope, $httpParamSerializerJQLike, Map, Query, PickList, landsList, officeList) {
       var clickHandler = false;
       $scope.mapDefaults = { scrollWheelZoom: false };
       $scope.officeList = officeList;
+      $scope.landsList = landsList.data;
       $scope.statusList = PickList.STATUS_LIST;
       $scope.taxonList = PickList.TAXON_LIST;
       $scope.regionList = PickList.REGION_LIST;
@@ -25,14 +26,21 @@
       };
 
       $scope.queryDatabase = function() {
-        var query;
-        var officeNames = [];
         $scope.loading.query = true;
+        var query;
+        if($scope.query.offices) {
+          var officeNames = $scope.query.offices.map(function(office) {
+            return office.name;
+          });
+        }
+        if($scope.query.lands) {
+          var landNames = $scope.query.lands.map(function(land) {
+            return land.name;
+          });
+        }
 
-        angular.forEach($scope.query.offices, function (office) {
-          officeNames.push(office.name);
-        });
         $scope.query.offices = officeNames;
+        $scope.query.lands = landNames;
         query = $httpParamSerializerJQLike($scope.query);
 
         Query.custom(query)

@@ -32,6 +32,11 @@
       </div>
 
       <div class="form-group">
+        <label for="lands">Protected Lands:</label>
+        <select ng-options="land.name for land in landsList" ng-model="query.lands" class="form-control" id="lands" multiple></select>
+      </div>
+
+      <div class="form-group">
         <label>Species Range:</label>
         <input type="radio" ng-model="query.rangeQueryType" name="stateQuery" value="any">&nbsp;&nbsp;Any&nbsp;&nbsp;
         <input type="radio" ng-model="query.rangeQueryType" name="stateQuery" value="all">&nbsp;&nbsp;All
