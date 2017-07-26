@@ -160,6 +160,9 @@
           resolve: {
             officeList: function (Office) {
               return Office.getOffices();
+            },
+            landsList: function(Lands) {
+              return Lands.getLands();
             }
           }
         })
