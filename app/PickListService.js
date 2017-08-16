@@ -98,7 +98,7 @@
       'Final Listing as Endangered due to Similarity of Appearance',
       'Lawsuit to Challenge Not Substantial 90-day Finding',
       'Lawsuit to Challenge Not Warranted 12-month Finding',
-      'Discretionary Status Review',
+      'Under Review by the Agency\'s Own Discretionary Action',
       'No Longer Considered a Listable Entity'
     ];
 
