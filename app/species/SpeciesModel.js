@@ -24,6 +24,7 @@
           this.experts = data.experts || [];
           this.lands = data.lands || [];
           this.updatedAt = data.updatedAt;
+          this.ssa = data.ssa;
         };
 
         SpeciesModel.prototype.create = function () {

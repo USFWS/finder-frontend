@@ -28,6 +28,11 @@
 
       <species-expert-list species="species" users="userList" ></species-expert-list>
 
+      <div class="form-group">
+      <label for="ssa">Species Status Assessment:</label>
+      <input ng-model="species.ssa" type="text" class="form-control" id="ssa" placeholder="https://fws.gov/...">
+      </div>
+      
       <species-status statuses="species.status" options="statusList"></species-status>
 
       <div class="form-group">
