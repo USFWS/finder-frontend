@@ -9,10 +9,18 @@
    * Controller of the frontendApp
    */
   angular.module('frontendApp')
-    .controller('QueryStatusCtrl', ['$scope', 'Query', 'PickList', '$httpParamSerializerJQLike', function ($scope, Query, PickList, $httpParamSerializerJQLike) {
+    .controller('QueryStatusCtrl', ['$scope', 'Query', 'PickList', '$httpParamSerializerJQLike', 'User', function ($scope, Query, PickList, $httpParamSerializerJQLike, User) {
       $scope.query = {};
       $scope.statusList = PickList.STATUS_LIST;
       $scope.loading = false;
+
+      $scope.isAdmin = function() {
+        return User.isAdmin();
+      }
+
+      $scope.isEditor = function() {
+        return User.isEditor();
+      }
 
       $scope.queryStatus = function() {
         $scope.loading = true;

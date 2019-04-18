@@ -9,10 +9,18 @@
    * Controller of the frontendApp
    */
   angular.module('frontendApp')
-    .controller('QueryEndemicCtrl', ['$scope', 'Query', 'PickList', function ($scope, Query, PickList) {
+    .controller('QueryEndemicCtrl', ['$scope', 'Query', 'PickList', 'User', function ($scope, Query, PickList, User) {
       $scope.query = {};
       $scope.stateList = PickList.STATE_LIST;
       $scope.loading = false;
+
+      $scope.isAdmin = function() {
+        return User.isAdmin();
+      }
+
+      $scope.isEditor = function() {
+        return User.isEditor();
+      }
 
       $scope.queryEndemic = function() {
         $scope.loading = true;
