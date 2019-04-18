@@ -13,7 +13,7 @@
 
       function getSpecies(query) {
         query = { params: query } || {};
-        return $http.get(API_URL + 'species', query)
+        return $http.get(API_URL + 'species?populate=offices', query)
           .then(function (response) {
             var species = [];
             angular.forEach(response.data, function (animal) {
@@ -28,9 +28,9 @@
 
       function getOne(id) {
         return $http.get(API_URL + 'species/' + id)
-        .then(function (response) {
-            return new SpeciesModel(response.data);
-        })
+          .then(function (response) {
+              return new SpeciesModel(response.data);
+          })
           .catch(function (response) {
             toastr.error(response.statusText, 'Could not retrieve species.');
           });
