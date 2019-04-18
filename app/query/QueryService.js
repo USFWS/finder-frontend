@@ -43,6 +43,70 @@
           });
       }
 
+      function pacificRegion() {
+        return $http.get(API_URL + 'species?where={"range": ["Idaho","Oregon","Washington","Hawaii"]}')
+          .then(onSuccess)
+          .catch(function (response) {
+            toastr.error(response.statusText, 'Query for species from a Pacific state failed.');
+          });
+      }
+
+      function southwestRegion() {
+        return $http.get(API_URL + 'species?where={"range": ["Arizona","New Mexico","Oklahoma","Texas"]}')
+          .then(onSuccess)
+          .catch(function (response) {
+            toastr.error(response.statusText, 'Query for species from a Southwestern state failed.');
+          });
+      }
+
+      function midwestRegion() {
+        return $http.get(API_URL + 'species?where={"range": ["Illinois","Indiana","Iowa","Michigan","Missouri","Minnesota","Ohio","Wisconsin"]}')
+          .then(onSuccess)
+          .catch(function (response) {
+            toastr.error(response.statusText, 'Query for species from a Southwestern state failed.');
+          });
+      }
+
+      function southeastRegion() {
+        return $http.get(API_URL + 'species?where={"range": ["Alabama","Arkansas","Florida","Georgia","Kentucky","Louisiana","Mississippi","North Carolina","South Carolina","Tennessee","Puerto Rico","U.S. Virgin Islands"]}')
+          .then(onSuccess)
+          .catch(function (response) {
+            toastr.error(response.statusText, 'Query for species from a Southeastern state failed.');
+          });
+      }
+
+      function northeastRegion() {
+        return $http.get(API_URL + 'species?where={"range": ["Connecticut","Delaware","Maine","Maryland","Massachusetts","New Hampshire","New Jersey","New York","Pennsylvania","Rhode Island","Vermont","Virginia","West Virginia"]}')
+          .then(onSuccess)
+          .catch(function (response) {
+            toastr.error(response.statusText, 'Query for species from a Northeastern state failed.');
+          });
+      }
+
+      function mountainPrairieRegion() {
+        return $http.get(API_URL + 'species?where={"range": ["Colorado","Kansas","Montana","North Dakota","Nebraska","South Dakota","Utah","Wyoming"]}')
+          .then(onSuccess)
+          .catch(function (response) {
+            toastr.error(response.statusText, 'Query for species from a Mountain Prairie state failed.');
+          });
+      }
+
+      function alaskaRegion() {
+        return $http.get(API_URL + 'species?where={"range": ["Alaska"]}')
+          .then(onSuccess)
+          .catch(function (response) {
+            toastr.error(response.statusText, 'Query for species from Alaska failed.');
+          });
+      }
+
+      function pacificSouthwestRegion() {
+        return $http.get(API_URL + 'species?where={"range": ["Nevada","California"]}')
+          .then(onSuccess)
+          .catch(function (response) {
+            toastr.error(response.statusText, 'Query for species from the Pacific Southwest failed.');
+          });
+      }
+
       function custom(query) {
         return $http.get(API_URL + 'query/custom?' + query)
           .then(onSuccess)
@@ -52,6 +116,7 @@
       }
 
       function onSuccess(response) {
+        if (typeof response.data === 'string') return response.data;
         var results = [];
         angular.forEach(response.data, function (animal) {
           results.push( new SpeciesModel(animal) );
@@ -63,6 +128,14 @@
 
       return {
         otherRegion: otherRegion,
+        pacificRegion: pacificRegion,
+        southwestRegion: southwestRegion,
+        midwestRegion: midwestRegion,
+        southeastRegion: southeastRegion,
+        northeastRegion: northeastRegion,
+        mountainPrairieRegion: mountainPrairieRegion,
+        alaskaRegion: alaskaRegion,
+        pacificSouthwestRegion: pacificSouthwestRegion,
         nonEndemic: nonEndemic,
         endemic: endemic,
         status: status,
