@@ -88,6 +88,10 @@
         return this.accountType.toLowerCase() === 'editor';
       };
 
+      UserModel.prototype.isRangeEditor = function () {
+        return this.accountType.toLowerCase() === 'range editor';
+      };
+
       return UserModel;
     }]);
 
