@@ -13,6 +13,8 @@
         <th ts-criteria="taxon" ts-default>Taxon</th>
         <th ts-criteria="leadOffice">Lead Office</th>
         <th>State Range</th>
+        <th>More</th>
+        <th ng-if="isAdmin() || isEditor()">Edit</th>
       </tr>
     </thead>
     <tbody>
@@ -24,6 +26,12 @@
         <td>{{ result.taxon }}</td>
         <td>{{ result.getLeadOfficeName() }}</td>
         <td>{{ result.range.join(', ') }}</td>
+        <td class="hidden-print">
+          <button ui-sref="species.detail({ id: result.id })" class="btn btn-sm btn-primary"><span class="fa fa-eye"></span></button>
+        </td>
+        <td ng-if="isAdmin() || isEditor()" class="hidden-print">
+          <button ui-sref="species.update({ id: result.id })" class="btn btn-sm btn-success"><span class="fa fa-edit"></span></button>
+        </td>
       </tr>
     </tbody>
   </table>
