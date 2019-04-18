@@ -1,0 +1,19 @@
+<!-- Species that occur in at least one Southeastern state -->
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h2 class="panel-title">Search for species by region based on state range</h2>
+  </div>
+  <div class="panel-body">
+    <p>This query returns all species whose range includes at least one state in a given region</p>
+    <form class="form">
+      <div class="form-group">
+        <label for="region">Region:</label>
+        <select ng-options="region for region in regions" ng-model="region" name="region" id="region" class="form-control"></select>
+      </div>
+
+      <button class="btn btn-info btn-block" ng-click="submit()">Submit Query<span class="fa fa-cog fa-spin" ng-show="loading"></span></button>
+    </form><br>
+  </div>
+</div>
+
+<div ng-show="results.length > 0" ng-include="'partials/query-results.html'"></div>
