@@ -43,6 +43,10 @@
         <leaflet geojson="geojson" center="center" defaults="mapDefaults" style="height: 300px;"></leaflet>
       </div>
 
+      <div class="form-group">
+        <label for="csv">Download data as CSV file: <input type="checkbox" id="csv" ng-model="query.csv"></label>
+      </div>
+
       <button type="submit" class="btn btn-info btn-block">
         Query <span ng-if="loading.query" class="fa fa-spin fa-gear"></span>
       </button>
