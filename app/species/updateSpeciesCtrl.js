@@ -9,12 +9,12 @@
    * Controller of the frontendApp
    */
   angular.module('frontendApp')
-    .controller('UpdateSpeciesCtrl', ['$scope', 'theSpecies', 'User', 'Map', 'PickList', 'officeList', 'userList', 'categoryList',
-      function ($scope, theSpecies, User, Map, PickList, officeList, userList, categoryList) {
-        $scope.mapDefaults = { scrollWheelZoom: false };
+    .controller('UpdateSpeciesCtrl', ['$scope', 'theSpecies', 'User', 'PickList', 'officeList', 'userList', 'categoryList',
+      function ($scope, theSpecies, User, PickList, officeList, userList, categoryList) {
         $scope.categories = categoryList;
         $scope.taxonList = PickList.TAXON_LIST;
         $scope.statusList = PickList.STATUS_LIST;
+        $scope.stateList = PickList.STATE_LIST;
         $scope.userList = userList;
         $scope.officeList = officeList;
         $scope.species = theSpecies;
@@ -36,24 +36,9 @@
         return User.isAdmin();
       };
 
-      $scope.loadMap = function() {
-        Map.getStates($scope.species.range).then(function (response) {
-          angular.extend($scope, {
-            geojson: {
-              data: response.data,
-              style: Map.geoStyle
-            }
-          });
-          $scope.$on('leafletDirectiveGeoJson.click', function(ev, payload) {
-            Map.toggleState(payload, $scope.species.range).then(function (response) {
-              $scope.species.range = response.range;
-              Map.updateStyle(response.payload);
-            });
-          });
-        });
-      };
-
-      $scope.loadMap();
+      $scope.isRangeEditor = function() {
+        return User.isRangeEditor();
+      }
     }]);
 
 })();
