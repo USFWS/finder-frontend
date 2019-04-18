@@ -32,6 +32,11 @@
           'sref': 'query.non-southeast'
         },
         {
+          "name": "Species by region based on state occurrence",
+          "description": "Search for species by region. This query will return species that occur within at least one of a region's states.",
+          "sref": 'query.region'
+        },
+        {
           'name': 'Custom Query',
           'description': 'Create your own query by combining different search criteria.',
           'sref': 'query.custom'
