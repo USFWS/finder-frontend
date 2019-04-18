@@ -66,6 +66,12 @@
         }
       }
 
+      function isRangeEditor() {
+        if (authenticated) {
+          return  payload.act === 'range editor';
+        }
+      }
+
       function isAdmin() {
         if (authenticated) {
           return  payload.act === 'admin';
@@ -90,6 +96,7 @@
         destroy: destroy,
         update: update,
         isEditor: isEditor,
+        isRangeEditor: isRangeEditor,
         isAdmin: isAdmin,
         getUsername: getUsername
       };
