@@ -13,6 +13,7 @@
      .factory('SpeciesModel', ['$http', 'API_URL', 'toastr', function ($http, API_URL, toastr) {
         var SpeciesModel = function (data) {
           this.id = data.id;
+          this.itis = data.itis;
           this.scientificName = data.scientificName;
           this.commonName = data.commonName;
           this.taxon = data.taxon;
