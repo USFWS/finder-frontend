@@ -4,40 +4,86 @@
   </div>
   <div class="panel-body">
     <form ng-submit="create(species)">
-
       <div class="form-group">
         <label for="scientificName">Scientific Name:</label>
-        <input ng-model="species.scientificName" type="text" class="form-control" id="scientificName" placeholder="Ambystoma barbouri" required>
+        <input
+          ng-model="species.scientificName"
+          type="text"
+          class="form-control"
+          id="scientificName"
+          placeholder="Ambystoma barbouri"
+          required
+        />
       </div>
 
       <div class="form-group">
         <label for="commonName">Common Name:</label>
-        <input ng-model="species.commonName" type="text" class="form-control" id="commonName" placeholder="Streamside salamander">
+        <input
+          ng-model="species.commonName"
+          type="text"
+          class="form-control"
+          id="commonName"
+          placeholder="Streamside salamander"
+        />
       </div>
 
       <div class="form-group">
         <label for="taxon">Taxonomic Group:</label>
-        <select ng-options="str for str in taxonList" ng-model="species.taxon" class="form-control" id="taxon" required></select>
+        <select
+          ng-options="str for str in taxonList"
+          ng-model="species.taxon"
+          class="form-control"
+          id="taxon"
+          required
+        ></select>
       </div>
 
-      <species-categorization-list categories="categories", species="species"></species-categorization-list>
+      <species-categorization-list
+        categories="categories"
+        species="species"
+      ></species-categorization-list>
 
       <proposed-determination species="species"></proposed-determination>
 
-      <species-office-list offices="officeList" species="species"></species-office-list>
+      <species-office-list
+        offices="officeList"
+        species="species"
+      ></species-office-list>
 
-      <species-expert-list species="species" users="userList" ></species-expert-list>
+      <species-expert-list
+        species="species"
+        users="userList"
+      ></species-expert-list>
 
       <div class="form-group">
-      <label for="ssa">Species Status Assessment:</label>
-      <input ng-model="species.ssa" type="text" class="form-control" id="ssa" placeholder="https://fws.gov/...">
+        <label for="ssa">Species Status Assessment:</label>
+        <input
+          ng-model="species.ssa"
+          type="text"
+          class="form-control"
+          id="ssa"
+          placeholder="https://fws.gov/..."
+        />
       </div>
-      
-      <species-status statuses="species.status" options="statusList"></species-status>
+      <div class="form-group">
+        <label for="itis">ITIS:</label>
+        <input
+          ng-model="species.itis"
+          type="text"
+          class="form-control"
+          id="itis"
+          placeholder="173858"
+        />
+      </div>
+
+      <species-status
+        statuses="species.status"
+        options="statusList"
+      ></species-status>
 
       <div class="form-group">
-        <label>Species Range:</label>
-        <leaflet geojson="geojson" center="center" defaults="mapDefaults" style="height: 300px;"></leaflet>
+        <label for="species-range">Range:</label>
+        <select ng-options="state for state in stateList" ng-model="species.range" class="form-control" name="species-range" id="species-range" multiple></select>
       </div>
 
       <button type="submit" class="btn btn-success btn-block">Create</button>
