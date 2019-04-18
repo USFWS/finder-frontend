@@ -9,15 +9,14 @@
    * Controller of the frontendApp
    */
   angular.module('frontendApp')
-    .controller('CreateSpeciesCtrl', ['$scope', 'SpeciesModel', 'Map', 'PickList', 'officeList', 'userList', 'categoryList',
-      function ($scope, SpeciesModel, Map, PickList, officeList, userList, categoryList) {
-      var clickHandler = false;
+    .controller('CreateSpeciesCtrl', ['$scope', 'SpeciesModel', 'PickList', 'officeList', 'userList', 'categoryList',
+      function ($scope, SpeciesModel, PickList, officeList, userList, categoryList) {
       $scope.categories = categoryList;
       $scope.officeList = officeList;
       $scope.userList = userList;
-      $scope.mapDefaults = { scrollWheelZoom: false };
       $scope.taxonList = PickList.TAXON_LIST;
       $scope.statusList = PickList.STATUS_LIST;
+      $scope.stateList = PickList.STATE_LIST;
       $scope.species = new SpeciesModel({});
       $scope.center = {
         lat: 34.8934492,
@@ -38,28 +37,6 @@
           });
         }
       };
-
-      $scope.loadMap = function () {
-        Map.getGeoJSON().then(function (response) {
-          angular.extend($scope, {
-            geojson: {
-              data: response.data,
-              style: Map.geoStyle
-            }
-          });
-          if (!clickHandler) {
-            clickHandler = true;
-            $scope.$on('leafletDirectiveGeoJson.click', function(ev, payload) {
-              Map.toggleState(payload, $scope.species.range).then(function (response) {
-                $scope.species.range = response.range;
-                Map.updateStyle(response.payload);
-              });
-            });
-          }
-        });
-      };
-
-      $scope.loadMap();
     }]);
 
 })();
