@@ -46,12 +46,17 @@
           </li>
         </ul>
       </div>
-      
+
       <div ng-if="species.ssa">
         <h3>Species Status Assessment:</h3>
         <ul>
           <li><a href="{{ species.ssa }}">Download SSA</a></li>
         </ul>
+      </div>
+
+      <div ng-if="species.itis">
+        <h3>ITIS.gov serial number</h3>
+        <p>{{ species.itis }}</p>
       </div>
 
       <h3>Status<span ng-if="species.status.length > 1">es</span>:</h3>
