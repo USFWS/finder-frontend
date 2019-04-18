@@ -159,6 +159,12 @@
             controller: "QueryNonSoutheastCtrl"
           })
 
+          .state("query.region", {
+            url: "/region",
+            templateUrl: "query/region/index.html",
+            controller: "SpeciesByRegionCtrl"
+          })
+
           .state("query.status", {
             url: "/status",
             templateUrl: "query/byStatus/status.html",
