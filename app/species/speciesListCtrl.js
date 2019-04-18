@@ -17,7 +17,7 @@
       };
 
       $scope.isEditor = function() {
-        return User.isEditor();
+        return User.isEditor() || User.isRangeEditor();
       };
 
       $scope.remove = function(species) {
