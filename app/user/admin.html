@@ -1,6 +1,14 @@
 <h1>User Administration</h1>
 <p>This view will only be available to Admin users.  The main purpose of this view is the ability to grant users additional permissions (i.e. upgrade a user from viewer to editor, or editor to admin).</p>
 
+<div class="form-group hidden-print">
+  <label class="sr-only">Query Users</label>
+  <div class="input-group">
+    <div class="input-group-addon"><span class="fa fa-search"></span></div>
+    <input type="search" class="form-control" ng-model="query" placeholder="Enter term to filter users" ng-model-options="{ debounce: 200 }">
+  </div>
+</div>
+
 <table class="table" ng-init="getUsers()">
   <thead>
     <tr>
@@ -13,7 +21,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="user in users">
+    <tr ng-repeat="user in users | filter:query">
       <td>{{ user.name }}</td>
       <td>{{ user.email }}</td>
       <td>{{ user.job }}</td>
