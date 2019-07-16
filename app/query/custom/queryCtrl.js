@@ -26,12 +26,11 @@
         zoom: 3
       };
 
-
-      $scope.isAdmin = function() {
+      $scope.isAdmin = function () {
         return User.isAdmin();
       }
 
-      $scope.isEditor = function() {
+      $scope.isEditor = function () {
         return User.isEditor();
       }
 
@@ -70,16 +69,16 @@
         }
       }
 
-      $scope.queryDatabase = function() {
+      $scope.queryDatabase = function () {
         $scope.loading.query = true;
         var query;
-        if($scope.query.offices) {
-          var officeNames = $scope.query.offices.map(function(office) {
+        if ($scope.query.offices) {
+          var officeNames = $scope.query.offices.map(function (office) {
             return office.name;
           });
         }
-        if($scope.query.lands) {
-          var landNames = $scope.query.lands.map(function(land) {
+        if ($scope.query.lands) {
+          var landNames = $scope.query.lands.map(function (land) {
             return land.name;
           });
         }
@@ -94,12 +93,12 @@
               downloadCSV(species);
             }
             else $scope.results = species;
-          }).finally(function() {
+          }).finally(function () {
             $scope.loading.query = false;
           });
       };
 
-      $scope.loadMap = function() {
+      $scope.loadMap = function () {
         Map.getGeoJSON().then(function (response) {
           angular.extend($scope, {
             geojson: {
@@ -109,7 +108,7 @@
           });
           if (!clickHandler) {
             clickHandler = true;
-            $scope.$on('leafletDirectiveGeoJson.click', function(ev, payload) {
+            $scope.$on('leafletDirectiveGeoJson.click', function (ev, payload) {
               Map.toggleState(payload, $scope.query.range).then(function (response) {
                 $scope.query.range = response.range;
                 Map.updateStyle(response.payload);
@@ -119,7 +118,7 @@
         });
       };
 
-      $scope.resetQuery = function() {
+      $scope.resetQuery = function () {
         $scope.loading.reset = true;
         $scope.query = { range: [], rangeQueryType: 'any', csv: false };
         Map.clearStates($scope.geojson).then(function (response) {
