@@ -10,6 +10,7 @@
         <th ts-criteria="scientificName">Scientific Name</th>
         <th ts-criteria="commonName">Common Name</th>
         <th ts-criteria="currentStatus()">Current Status</th>
+        <th ts-criteria="currentStatusDate()">Status Updated</th>
         <th ts-criteria="taxon" ts-default>Taxon</th>
         <th ts-criteria="leadOffice">Lead Office</th>
         <th>State Range</th>
@@ -23,6 +24,7 @@
         <td>{{ result.scientificName }}</td>
         <td>{{ result.commonName }}</td>
         <td>{{ result.currentStatus() }}</td>
+        <td>{{ result.currentStatusDate() }}</td>
         <td>{{ result.taxon }}</td>
         <td>{{ result.getLeadOfficeName() }}</td>
         <td>{{ result.range.join(', ') }}</td>
