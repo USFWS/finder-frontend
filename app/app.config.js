@@ -1,4 +1,4 @@
-(function() {
+(function () {
   "use strict";
 
   var API_URL = 'https://finder.royhewitt.com/';
@@ -14,7 +14,7 @@
       "$stateProvider",
       "$authProvider",
       "toastrConfig",
-      function(
+      function (
         $urlRouterProvider,
         $stateProvider,
         $authProvider,
@@ -29,7 +29,7 @@
             templateUrl: "home/main.html",
             controller: "HomeCtrl",
             resolve: {
-              SpeciesList: function(Species) {
+              SpeciesList: function (Species) {
                 return Species.getSpecies({ populate: false });
               }
             }
@@ -45,7 +45,7 @@
             templateUrl: "species/summary.html",
             controller: "SpeciesListCtrl",
             resolve: {
-              SpeciesList: function(Species) {
+              SpeciesList: function (Species) {
                 return Species.getSpecies({ populate: false });
               }
             }
@@ -56,7 +56,7 @@
             templateUrl: "species/list.html",
             controller: "SpeciesListCtrl",
             resolve: {
-              SpeciesList: function(Species) {
+              SpeciesList: function (Species) {
                 return Species.getSpecies({ populate: ["categorization"] });
               }
             }
@@ -67,13 +67,13 @@
             templateUrl: "species/create.html",
             controller: "CreateSpeciesCtrl",
             resolve: {
-              officeList: function(Office) {
+              officeList: function (Office) {
                 return Office.getOffices();
               },
-              userList: function(User) {
+              userList: function (User) {
                 return User.getUsers();
               },
-              categoryList: function(Category) {
+              categoryList: function (Category) {
                 return Category.getCategories();
               }
             }
@@ -84,16 +84,16 @@
             templateUrl: "species/update.html",
             controller: "UpdateSpeciesCtrl",
             resolve: {
-              theSpecies: function(Species, $stateParams) {
+              theSpecies: function (Species, $stateParams) {
                 return Species.getOne($stateParams.id);
               },
-              officeList: function(Office) {
+              officeList: function (Office) {
                 return Office.getOffices();
               },
-              userList: function(User) {
+              userList: function (User) {
                 return User.getUsers();
               },
-              categoryList: function(Category) {
+              categoryList: function (Category) {
                 return Category.getCategories();
               }
             }
@@ -104,10 +104,10 @@
             templateUrl: "species/detail.html",
             controller: "SpeciesCtrl",
             resolve: {
-              theSpecies: function(Species, $stateParams) {
+              theSpecies: function (Species, $stateParams) {
                 return Species.getOne($stateParams.id);
               },
-              associatedLands: function($http, $stateParams) {
+              associatedLands: function ($http, $stateParams) {
                 var query = {
                   params: {
                     where: { species: $stateParams.id }
@@ -115,8 +115,8 @@
                 };
                 return $http
                   .get(API_URL + "specieslands", query)
-                  .then(function(res) {
-                    return res.data.map(function(association) {
+                  .then(function (res) {
+                    return res.data.map(function (association) {
                       return {
                         id: association.id,
                         name: association.land.name,
@@ -176,10 +176,10 @@
             templateUrl: "query/custom/custom.html",
             controller: "QueryCtrl",
             resolve: {
-              officeList: function(Office) {
+              officeList: function (Office) {
                 return Office.getOffices();
               },
-              landsList: function(Lands) {
+              landsList: function (Lands) {
                 return Lands.getLands();
               }
             }
@@ -201,7 +201,7 @@
             templateUrl: "user/profile.html",
             controller: "ProfileCtrl",
             resolve: {
-              currentUser: function(User, $stateParams) {
+              currentUser: function (User, $stateParams) {
                 return User.getUser($stateParams.id);
               }
             }
@@ -212,7 +212,7 @@
             templateUrl: "user/profile.html",
             controller: "ProfileCtrl",
             resolve: {
-              currentUser: function(User, $stateParams) {
+              currentUser: function (User, $stateParams) {
                 return User.getUser($stateParams.id);
               }
             }
@@ -223,7 +223,7 @@
             templateUrl: "user/admin.html",
             controller: "UserAdminCtrl",
             resolve: {
-              allUsers: function(User) {
+              allUsers: function (User) {
                 return User.getUsers();
               }
             }
@@ -245,7 +245,7 @@
             templateUrl: "offices/detail.html",
             controller: "OfficeDetailCtrl",
             resolve: {
-              theOffice: function(Office, $stateParams) {
+              theOffice: function (Office, $stateParams) {
                 return Office.getOffice($stateParams.id);
               }
             }
@@ -256,7 +256,7 @@
             templateUrl: "offices/update.html",
             controller: "OfficeUpdateCtrl",
             resolve: {
-              theOffice: function(Office, $stateParams) {
+              theOffice: function (Office, $stateParams) {
                 return Office.getOffice($stateParams.id);
               }
             }
@@ -267,7 +267,7 @@
             templateUrl: "offices/list.html",
             controller: "OfficeListCtrl",
             resolve: {
-              officeList: function(Office) {
+              officeList: function (Office) {
                 return Office.getOffices();
               }
             }
@@ -283,7 +283,7 @@
             templateUrl: "categories/list.html",
             controller: "CategoryListCtrl",
             resolve: {
-              categoryList: function(Category) {
+              categoryList: function (Category) {
                 return Category.getCategories();
               }
             }
@@ -294,7 +294,7 @@
             templateUrl: "categories/create.html",
             controller: "CategoriesCtrl",
             resolve: {
-              category: function() {
+              category: function () {
                 return null;
               }
             }
@@ -305,7 +305,7 @@
             templateUrl: "categories/update.html",
             controller: "CategoriesCtrl",
             resolve: {
-              category: function(Category, $stateParams) {
+              category: function (Category, $stateParams) {
                 return Category.getCategory($stateParams.id);
               }
             }
@@ -316,10 +316,10 @@
             templateUrl: "lands/lands.html",
             controller: "LandsCtrl",
             resolve: {
-              landsList: function(Lands) {
+              landsList: function (Lands) {
                 return Lands.getLands();
               },
-              speciesList: function(Species) {
+              speciesList: function (Species) {
                 return Species.getSpecies();
               }
             }
