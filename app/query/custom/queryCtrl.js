@@ -45,7 +45,7 @@
 
       function getFileName() {
         var now = new Date();
-        return "at-risk-species-finder-custom-query" + now
+        return "at-risk-species-finder-custom-query-" + now
           .toISOString()
           .slice(0, 10)
           + '.csv';
